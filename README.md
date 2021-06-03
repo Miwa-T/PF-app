@@ -26,13 +26,13 @@
 ・パンの画像をそもそも見ているだけでなんだか満たされる時。(＝パン好きの心の栄養が足りない時)
 
 ## 設計書
-画面遷移図・ER図・ワイヤーフレーム
+画面遷移図・ER図・ワイヤーフレーム<br>
 https://drive.google.com/file/d/1Lve3kx6cmtFDwYqiYLUKkOL2hh_B5TXR/view?usp=sharing
 
-テーブル定義書
+テーブル定義書<br>
 https://drive.google.com/file/d/1RoPAXX5nqhf20YjRbyPzCr9ky6f0ZLpM/view?usp=sharing
 
-アプリケーション詳細設計
+アプリケーション詳細設計<br>
 https://drive.google.com/file/d/1U86dF1ZZewO5-Twp63alWJNkp1jzaLIi/view?usp=sharing
 
 ## チャレンジ要素一覧
