@@ -1,0 +1,25 @@
+<div class="container">
+  <h5>New Post</h5>
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @post_image, local: true do |f| %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><%= f.label :'画像' %></td>
+            <td><%= f.attachment_field :image, placeholder: "画像" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :'コメント' %></td>
+            <td><%= f.text_area :explain, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit '投稿する', class: "btn btn-info" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

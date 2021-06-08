@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root 'homes#top'
 
-  namespace :public do
+  scope module: :public do
     get 'users/unsubscribe' => 'users#unsubscribe'
     patch 'users/withdraw' => 'users#withdraw'
     resources :users, only: [:show, :edit, :update]
