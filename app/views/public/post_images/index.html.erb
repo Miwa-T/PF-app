@@ -1,0 +1,20 @@
+<!--投稿一覧画面-->
+<div class="container">
+  <h5>index</h5>
+  <div class="row">
+    <div class="col">
+      <% @post_images.each do |post_image| %>
+      <div>
+        <%= link_to user_path(post_image.user.id) do %>
+          <%= post_image.user.account_name %>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to post_image_path(post_image.id) do %>
+          <%= attachment_image_tag post_image, :image, :fill, 200,200, class: "rounded" %>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
