@@ -6,6 +6,7 @@ class Public::PostImagesController < ApplicationController
 
   def show
     @post_image = PostImage.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -15,8 +16,11 @@ class Public::PostImagesController < ApplicationController
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
-    @post_image.save
-    redirect_to post_images_path
+    if @post_image.save
+      redirect_to post_image_path(@post_image.id)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -26,13 +30,13 @@ class Public::PostImagesController < ApplicationController
   def update
     @post_image = PostImage.find(params[:id])
     @post_image.update(post_image_params)
-    redirect_to post_images_path
+    redirect_to post_image_path(@post_image.id)
   end
 
   def destroy
     @post_image = PostImage.find(params[:id])
     @post_image.destroy
-    redirect_to post_images_path
+    redirect_to user_path(@post_image.user)
   end
 
   private
