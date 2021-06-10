@@ -17,4 +17,10 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
+  enum is_deleted: {Available: true, Invalid: false}
+
+  def active_for_authentication?
+    super && (self.is_deleted == "Invalid")
+  end
+
 end

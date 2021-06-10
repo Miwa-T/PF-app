@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   root 'homes#top'
 
   scope module: :public do
-    get 'users/unsubscribe' => 'users#unsubscribe'
-    patch 'users/withdraw' => 'users#withdraw'
+    get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'user_unsubscribe'
+    patch 'users/:id/withdraw' => 'users#withdraw', as: 'user_withdraw'
     resources :users, only: [:show, :edit, :update]
     resources :post_images do
       resources :comments, only: [:create, :destroy]
