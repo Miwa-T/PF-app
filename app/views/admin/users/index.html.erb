@@ -19,11 +19,17 @@
             <td><%= user.email %></td>
           </tr>
           <tr>
-            <td>会員ステータス</td>
-            <td></td>
+            <td>ユーザーステータス</td>
+            <td>
+              <%= user.is_deleted %>
+              <% if user == "Available" %>退会
+              <% else %>有効
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
+      <% end %>
     </div>
   </div>
 </div>

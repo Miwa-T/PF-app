@@ -1,0 +1,14 @@
+<% post_image.comments.each do |comment| %>
+  <tdody>
+    <tr>
+      <td><%= attachment_image_tag comment.user, :profile_image, :fill, 100, 100, class: "rounded-circle" %></td>
+      <td><%= comment.user.account_name %></td>
+      <td><%= comment.comment %></td>
+      <td>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", post_image_comment_path(comment.post_image, comment), method: :delete, remote: true, class: "btn btn-info" %>
+        <% end %>
+      </td>
+    </tr>
+  </tdody>
+<% end %>

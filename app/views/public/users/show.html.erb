@@ -1,21 +1,30 @@
 <!--Mypage-->
 <div class="container">
+  <h5>Mypage</h5>
   <div class="row">
-    <div class="col-6">
+    <div class="col">
       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, class: "rounded-circle" %>
       <%= @user.account_name %>
       投稿数:<%= @user.post_images.count %>
-      <%#=フォロワー数 %>
-      <%#=フォロー数 %>
+      <%= link_to follows_user_path(@user.id) do %>
+        フォロー数:<%= @user.followings.count %>
+      <% end %>
+      <%= link_to followers_user_path(@user.id) do %>
+        フォロワー数:<%= @user.followers.count %>
+      <% end %>
+      </p>
       <%= @user.introduction %>
-    </div>
-    <div class="col-6">
-      <%#= フォロー/フォロー外すボタン %>
+
+      <div id="followbtn_<%= @user.id %>">
+        <%= render "public/users/followbtn", user: @user, follow: @follow %>
+      </div>
+
       <% if @user == current_user %>
       <%= link_to "", edit_user_path(@user), class: "fas fa-user-cog fa-2x" %>
       <%= link_to "", new_post_image_path, class: "fas fa-edit fa-2x" %>
       <% end %>
     </div>
+  </div>
     <div class="row">
       <div class="col">
         <% @post_images.each do |post_image| %>
@@ -25,8 +34,6 @@
             <% end %>
           </div>
         <% end %>
-
       </div>
     </div>
-  </div>
 </div>
