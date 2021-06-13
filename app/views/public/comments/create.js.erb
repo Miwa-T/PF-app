@@ -1,2 +1,2 @@
-$("#.comment-table").html("<%= j(render 'public/comments/comment', post_image: @post_image) %>");
+$(".comment-table_<%= @post_image.id %>").html("<%= j(render 'public/comments/comment', post_image: @post_image) %>");
 $("#comment_comment").val("");

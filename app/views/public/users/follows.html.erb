@@ -12,13 +12,11 @@
                 <%= user.account_name %>
               <% end %>
               投稿数:<%= user.post_images.count %>
-              <% if current_user != user %>
-                <% if user.followed_by?(current_user) %>
-                  <%= link_to "フォロー済み", user_relationship_path(user.id), method: :delete %>
-                <% else %>
-                  <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
-                <% end %>
-              <% end %>
+
+              <div id="followbtn_<%= @user.id %>">
+                <%= render "public/users/followbtn", user: @user, follow: @follow %>
+              </div>
+
             </td>
           </tr>
         </tbody>

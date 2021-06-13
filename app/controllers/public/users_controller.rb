@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @user = User.find(params[:id])
@@ -31,13 +32,15 @@ class Public::UsersController < ApplicationController
   end
 
   def follows
-    user = User.find(params[:id])
-    @users = user.followings
+    @user = User.find(params[:id])
+    @users = @user.followings
+    @follow = current_user.active_relationsips.first
   end
 
   def followers
-    user = User.find(params[:id])
-    @users = user.followers
+    @user = User.find(params[:id])
+    @users = @user.followers
+    @follow = current_user.active_relationsips.first
   end
 
   private

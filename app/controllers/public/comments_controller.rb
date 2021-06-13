@@ -1,4 +1,5 @@
 class Public::CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @post_image = PostImage.find(params[:post_image_id])
@@ -9,6 +10,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
+    @post_image = PostImage.find(params[:post_image_id])
     Comment.find_by(id: params[:id], post_image_id: params[:post_image_id]).destroy
   end
 

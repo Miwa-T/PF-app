@@ -23,9 +23,9 @@
         <%= link_to "削除", post_image_path(@post_image.id), method: :delete, class: "btn btn-info" %>
       <% end %>
       <!--コメント表示-->
-      <table class="comment-table">
+      <div class="comment-table_<%= @post_image.id %>">
         <%= render "public/comments/comment", post_image: @post_image %>
-      </table>
+      </div>
       <div class="new-comment">
         <%= form_with(model: [@post_image, @comment], remote: true) do |f| %>
           <%= f.text_area :comment, rows:'3', class: "form-control" %>

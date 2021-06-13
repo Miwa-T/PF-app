@@ -9,10 +9,11 @@
       <%= link_to follows_user_path(@user.id) do %>
         フォロー数:<%= @user.followings.count %>
       <% end %>
-      <%= link_to followers_user_path(@user.id) do %>
+
+      <%= link_to followers_user_path(@user.id), id: "followers-count_#{@user.id}" do %>
         フォロワー数:<%= @user.followers.count %>
       <% end %>
-      </p>
+
       <%= @user.introduction %>
 
       <div id="followbtn_<%= @user.id %>">
@@ -33,7 +34,10 @@
               <%= attachment_image_tag post_image, :image, :fill, 200,200, class: "rounded" %>
             <% end %>
           </div>
-        <% end %>
+          <div id="post_image_<%= post_image.id %>">
+            <%= render "public/favorites/favorite", post_image: post_image %>
+          </div>
+          <% end %>
       </div>
     </div>
 </div>
