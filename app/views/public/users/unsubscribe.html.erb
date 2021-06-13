@@ -1,0 +1,9 @@
+<div class="container">
+  <h5>本当に退会しますか？</h5>
+  <div class="row">
+    <div class="col">
+      <%= link_to "Yes", user_withdraw_path(@user), method: :patch, class: "btn btn-info" %>
+      <%= link_to "No", edit_user_path(@user), class: "btn btn-info" %>
+    </div>
+  </div>
+</div>

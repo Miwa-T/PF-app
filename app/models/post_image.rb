@@ -11,4 +11,9 @@ class PostImage < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+
+  def my_favorite(user)
+    favorites.where(user_id: user.id).first
+  end
+
 end

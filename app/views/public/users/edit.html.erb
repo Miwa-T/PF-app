@@ -34,7 +34,7 @@
                 <td></td>
                 <!--変更保存後はマイページ、退会するボタン押下後は退会確認画面へ-->
                 <td><%= f.submit '変更を保存する', class: "btn btn-info" %>
-                    <%= link_to '退会する', users_unsubscribe_path, method: :patch, class: "btn btn-info" %>
+                    <%= link_to '退会する', user_unsubscribe_path(@user), class: "btn btn-info" %>
                 </td>
               </tr>
             </tbody>
