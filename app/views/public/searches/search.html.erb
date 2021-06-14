@@ -1,0 +1,28 @@
+<div class="container">
+  <h5>Search for User</h5>
+  <div class="row">
+    <div class="col">
+      <% @range == "User" %>
+      <% @users.each do |user| %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= attachment_image_tag user, :profile_image, :fill, 100, 100, class: "rounded-circle" %>
+              <%= link_to user_path(user) do %>
+                <%= user.account_name %>
+              <% end %>
+              投稿数:<%= user.post_images.count %>
+
+              <div id="followbtn_<%= user.id %>">
+                <%= render "public/users/followbtn", user: user, follow: @follow %>
+              </div>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

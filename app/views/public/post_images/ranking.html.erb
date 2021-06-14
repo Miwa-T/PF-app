@@ -1,17 +1,10 @@
-<!--投稿一覧画面-->
 <div class="container">
-  <h5>index</h5>
-  <%= form_with url: searches_search_path, method: :get, local: true do |f| %>
-    <%= f.select :range, options_for_select(["User"]) %>
-    <%= f.select :search, options_for_select([["完全一致","perfect_match"],["部分一致","partial_match"]]) %>
-    <%= f.text_field :word %>
-    <%= f.submit "検索" %>
-  <% end %>
-
+  <h5>Ranking</h5>
   <div class="row">
     <div class="col">
-      <% @post_images.each do |post_image| %>
+      <% @all_ranks.each.with_index(1) do |post_image,i| %>
       <div>
+        No.<%= i %>
         <%= link_to user_path(post_image.user.id) do %>
           <%= post_image.user.account_name %>
         <% end %>

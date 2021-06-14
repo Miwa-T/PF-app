@@ -16,10 +16,12 @@ Rails.application.routes.draw do
       get :follows, on: :member
       get :followers, on: :member
     end
+    get 'post_images/ranking' => 'post_images#ranking', as: 'post_image_ranking'
     resources :post_images do
       resources :comments, only: [:create, :destroy]
       resources :favorites, only: [:create, :destroy]
     end
+    get 'searches/search'
   end
 
   devise_for :admins, controllers: {
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
+    get 'searches/search'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

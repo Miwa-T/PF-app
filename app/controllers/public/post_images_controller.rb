@@ -41,6 +41,10 @@ class Public::PostImagesController < ApplicationController
     redirect_to user_path(@post_image.user)
   end
 
+  def ranking
+    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id)desc').limit(5).pluck(:post_image_id))
+  end
+
   private
   def post_image_params
     params.require(:post_image).permit(:image, :explain)

@@ -1,5 +1,5 @@
 <div class="container">
-  <%= @user.account_name %>さんの会員詳細
+  <h5><%= @user.account_name %>さんの会員詳細</h5>
   <%= link_to "編集する",edit_admin_user_path(@user) %>
   <div class="row">
     <div class="col">
@@ -32,10 +32,9 @@
           <tr>
             <td>ユーザーステータス</td>
             <td>
-              <%= user.is_deleted %>
-                <% if user == "Available" %>退会
-                <% else %>有効
-                <% end %>
+              <% if @user.is_deleted == "Available" %>退会
+              <% else %>有効
+              <% end %>
             </td>
           </tr>
         </tbody>
