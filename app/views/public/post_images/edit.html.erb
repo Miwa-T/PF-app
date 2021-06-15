@@ -1,7 +1,7 @@
 <!--投稿編集画面-->
-<div class="container">
+<div class="container py-5">
   <h5>Edit MyPost</h5>
-  <div class="row">
+  <div class="row col-8 mx-auto py-3">
     <div class="col">
       <%= form_with model: @post_image, local: true do |f| %>
       <table class="table table-borderless">
@@ -11,7 +11,7 @@
             <td><%= f.attachment_field :image, placeholder: "image" %></td>
           </tr>
           <tr>
-            <td><%= f.label :'コメント' %></td>
+            <td><%= f.label :'投稿内容' %></td>
             <td><%= f.text_area :explain, class: "form-control" %></td>
           </tr>
           <tr>

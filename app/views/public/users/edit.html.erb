@@ -1,26 +1,26 @@
 <!--Mypage編集画面-->
-<div class="container">
+<div class="container py-5">
   <h5>Edit My profile</h5>
-  <div class="row">
+  <div class="row col-8 mx-auto py-3">
     <div class="col">
       <%= form_with model: @user, local: true do |f| %>
           <table class="table table-borderless">
             <tbody>
               <tr>
                 <td><%= f.label :'名前' %></td>
-                <td><%= f.text_field :name, autocomplete: "name" %></td>
+                <td><%= f.text_field :name, autocomplete: "name", class: "form-control" %></td>
               </tr>
               <tr>
                 <td><%= f.label :'アカウント名' %></td>
-                <td><%= f.text_field :account_name, autocomplete: "account_name" %></td>
+                <td><%= f.text_field :account_name, autocomplete: "account_name", class: "form-control" %></td>
               </tr>
               <tr>
                 <td><%= f.label :'メールアドレス' %></td>
-                <td><%= f.email_field :email, autocomplete: "email" %></td>
+                <td><%= f.email_field :email, autocomplete: "email", class: "form-control" %></td>
               </tr>
               <tr>
                 <td><%= f.label :'電話番号' %></td>
-                <td><%= f.text_field :number, autocomplete: "number" %></td>
+                <td><%= f.text_field :number, autocomplete: "number", class: "form-control" %></td>
               </tr>
               <tr>
                 <td><%= f.label :'プロフィール画像' %></td>
@@ -28,13 +28,13 @@
               </tr>
               <tr>
                 <td><%= f.label :'自己紹介' %></td>
-                <td><%= f.text_area :introduction, autocomplete: "introduction" %></td>
+                <td><%= f.text_area :introduction, autocomplete: "introduction", class: "form-control" %></td>
               </tr>
               <tr>
                 <td></td>
                 <!--変更保存後はマイページ、退会するボタン押下後は退会確認画面へ-->
                 <td><%= f.submit '変更を保存する', class: "btn btn-info" %>
-                    <%= link_to '退会する', user_unsubscribe_path(@user), class: "btn btn-info" %>
+                    <%= link_to '退会する', user_unsubscribe_path(@user), class: "btn btn-info mx-5" %>
                 </td>
               </tr>
             </tbody>

@@ -1,7 +1,7 @@
  <!--管理者側会員編集ページ-->
-<div class="container">
+<div class="container py-5">
   <h5>会員編集ページ</h5>
-  <div class="row">
+  <div class="row col-8 mx-auto py-3">
     <div class="col">
       <%= form_with model: @user,url: admin_user_path, local: true do |f| %>
         <table class="table table-borderless">
@@ -12,30 +12,30 @@
             </tr>
             <tr>
               <td><%= f.label :'名前' %></td>
-              <td><%= f.text_field :name, autocomplete: "name" %></td>
+              <td><%= f.text_field :name, autocomplete: "name", class: "form-control" %></td>
             </tr>
             <tr>
               <td><%= f.label :'アカウント名' %></td>
-              <td><%= f.text_field :account_name, autocomplete: "account_name" %></td>
+              <td><%= f.text_field :account_name, autocomplete: "account_name", class: "form-control" %></td>
             </tr>
             <tr>
               <td><%= f.label :'メールアドレス' %></td>
-              <td><%= f.email_field :email, autocomplete: "email" %></td>
+              <td><%= f.email_field :email, autocomplete: "email", class: "form-control" %></td>
             </tr>
             <tr>
               <td><%= f.label :'電話番号' %></td>
-              <td><%= f.text_field :number, autocomplete: "number" %></td>
+              <td><%= f.text_field :number, autocomplete: "number", class: "form-control" %></td>
             </tr>
             <tr>
               <td><%= f.label :'自己紹介' %></td>
-              <td><%= f.text_area :introduction, autocomplete: "introduction" %></td>
+              <td><%= f.text_area :introduction, autocomplete: "introduction", class: "form-control" %></td>
             </tr>
             <tr>
               <td><%= f.label :'ユーザーステータス' %></td>
               <td>
-                <%= f.radio_button :is_deleted, false %>
+                <%= f.radio_button :is_deleted, "Invalid" %>
                 <%= f.label :is_deleted, '有効', value: false %>
-                <%= f.radio_button :is_deleted, true %>
+                <%= f.radio_button :is_deleted, "Available" %>
                 <%= f.label :is_deleted, '退会', value: true %>
               </td>
             </tr>
