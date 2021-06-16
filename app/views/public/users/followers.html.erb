@@ -1,21 +1,28 @@
-<div class="container">
+<!--フォロワー一覧ページ-->
+<div class="container py-5">
   <h5>フォロワー</h5>
+  <% @users.each do |user| %>
   <div class="row">
-    <div class="col">
-      <% @users.each do |user| %>
+    <div class="col-2">
+       <%= attachment_image_tag user, :profile_image, :fill, 100, 100, class: "rounded-circle" %>
+    </div>
+    <div class="col-2">
+      <%= link_to user_path(user) do %>
+        <%= user.account_name %>
+      <% end %>
+    </div>
+      
       <table class="table">
         <tbody>
           <tr>
             <td>
-              <%= attachment_image_tag user, :profile_image, :fill, 100, 100, class: "rounded-circle" %>
-              <%= link_to user_path(user) do %>
-                <%= user.account_name %>
-              <% end %>
+              
               投稿数:<%= user.post_images.count %>
 
               <div id="followbtn_<%= @user.id %>">
                 <%= render "public/users/followbtn", user: @user, follow: @follow %>
               </div>
+              
             </td>
           </tr>
         </tbody>

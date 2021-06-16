@@ -1,37 +1,51 @@
 <!--投稿詳細画面-->
-<div class="container">
+<div class="container py-5">
   <div class="row">
-    <div class="col">
+    <div class="col-2">
        <%= attachment_image_tag @post_image.user, :profile_image,:fill, 100,100, class: "rounded-circle" %>
-       <%= link_to user_path(@post_image.user.id) do %>
+    </div>
+    <div class="col-3">
+      <%= link_to user_path(@post_image.user.id) do %>
          <%= @post_image.user.account_name %>
        <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-6">
-      <%= attachment_image_tag @post_image, :image,:fill, 450,450, class: "rounded" %>
-      <div id="post_image_<%= @post_image.id %>">
-        <%= render "public/favorites/favorite", post_image: @post_image %>
+    <div class="row py-3">
+      <div class="col-6">
+        <%= attachment_image_tag @post_image, :image,:fill, 450,450, class: "rounded" %>
+        <div id="post_image_<%= @post_image.id %>">
+          <%= render "public/favorites/favorite", post_image: @post_image %>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <div class="col">
+            <p>投稿内容</p>
+            <%= @post_image.explain %>
+              <% if @post_image.user == current_user %>
+                <%= link_to "編集", edit_post_image_path(@post_image.id), class: "btn btn-info" %>
+                <%= link_to "削除", post_image_path(@post_image.id), method: :delete, class: "btn btn-info" %>
+              <% end %>
+          </div>
+        </div>
+        <!--コメント表示-->
+        <div class="row">
+          <div class="col">
+            <div class="comment-table_<%= @post_image.id %>">
+              <%= render "public/comments/comment", post_image: @post_image %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="new-comment">
+              <%= form_with(model: [@post_image, @comment], remote: true) do |f| %>
+                <%= f.text_area :comment, rows:'3', class: "form-control" %>
+                <%= f.submit 'コメントを投稿する', class: "btn btn-info my-2" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-6">
-      <p>投稿内容</p>
-      <%= @post_image.explain %>
-      <% if @post_image.user == current_user %>
-        <%= link_to "編集", edit_post_image_path(@post_image.id), class: "btn btn-info" %>
-        <%= link_to "削除", post_image_path(@post_image.id), method: :delete, class: "btn btn-info" %>
-      <% end %>
-      <!--コメント表示-->
-      <div class="comment-table_<%= @post_image.id %>">
-        <%= render "public/comments/comment", post_image: @post_image %>
-      </div>
-      <div class="new-comment">
-        <%= form_with(model: [@post_image, @comment], remote: true) do |f| %>
-          <%= f.text_area :comment, rows:'3', class: "form-control" %>
-          <%= f.submit 'コメントを投稿する', class: "btn btn-info" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
 </div>

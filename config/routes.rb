@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users, controllers: {
   sessions: 'users/sessions',
   password: 'users/passwords',
@@ -18,9 +17,13 @@ Rails.application.routes.draw do
     end
     get 'post_images/ranking' => 'post_images#ranking', as: 'post_image_ranking'
     resources :post_images do
+      collection do
+        get :mypost_images
+      end
       resources :comments, only: [:create, :destroy]
       resources :favorites, only: [:create, :destroy]
     end
+    resources :mypost_images, only: [:index]
     get 'searches/search'
   end
 
