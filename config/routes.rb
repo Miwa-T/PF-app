@@ -18,12 +18,11 @@ Rails.application.routes.draw do
     get 'post_images/ranking' => 'post_images#ranking', as: 'post_image_ranking'
     resources :post_images do
       collection do
-        get :mypost_images
+        resources :mypost_images, only: [:index]
       end
       resources :comments, only: [:create, :destroy]
       resources :favorites, only: [:create, :destroy]
     end
-    resources :mypost_images, only: [:index]
     get 'searches/search'
   end
 

@@ -36,6 +36,6 @@ $(function () {
   });
   $(document).on('turbolinks:before-cache', clearCalendar);
   $('#calendar').fullCalendar({
-    events: '/mypost_images.json'
+    events: '/post_images/mypost_images.json'
   });
 });

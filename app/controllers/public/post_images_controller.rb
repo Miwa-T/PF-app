@@ -9,6 +9,7 @@ class Public::PostImagesController < ApplicationController
   def show
     @post_image = PostImage.find(params[:id])
     @comment = Comment.new
+
   end
 
   def new
@@ -17,8 +18,10 @@ class Public::PostImagesController < ApplicationController
 
   def create
     @post_image = PostImage.new(post_image_params)
+
     @post_image.user_id = current_user.id
     if @post_image.save
+
       redirect_to post_image_path(@post_image.id)
     else
       render :new
@@ -42,12 +45,12 @@ class Public::PostImagesController < ApplicationController
   end
 
   def ranking
-    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id)desc').limit(5).pluck(:post_image_id))
+    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id)desc').limit(12).pluck(:post_image_id))
   end
 
   private
   def post_image_params
-    params.require(:post_image).permit(:image, :explain)
+    params.require(:post_image).permit(:image, :explain, :title)
   end
 
 end

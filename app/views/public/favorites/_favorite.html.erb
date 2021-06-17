@@ -1,12 +1,12 @@
 <% if post_image.favorited_by?(current_user) %>
   <p>
-    <%= link_to post_image_favorite_path(post_image.id,post_image.my_favorite(current_user).id), method: :delete, remote: true do %>
+    <%= link_to post_image_favorite_path(post_image.id,post_image.my_favorite(current_user).id), class: "no-underline", method: :delete, remote: true do %>
       <i class="fas fa-heart unlike-btn fa-lg"></i><%= post_image.favorites.count %>
     <% end %>
   </p>
 <% else %>
   <p>
-    <%= link_to post_image_favorites_path(post_image.id), method: :post, remote: true do %>
+    <%= link_to post_image_favorites_path(post_image.id), class: "no-underline", method: :post, remote: true do %>
       <i class="far fa-heart like-btn fa-lg"></i><%= post_image.favorites.count %>
     <% end %>
   </p>

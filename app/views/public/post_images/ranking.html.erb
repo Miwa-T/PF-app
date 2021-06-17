@@ -1,23 +1,22 @@
-<div class="container">
+<!--ランキングページ-->
+<div class="container py-5">
   <h5>Ranking</h5>
-  <div class="row">
-    <div class="col">
+    <div class="row" style="flex-wrap:wrap;">
       <% @all_ranks.each.with_index(1) do |post_image,i| %>
-      <div>
-        No.<%= i %>
-        <%= link_to user_path(post_image.user.id) do %>
-          <%= post_image.user.account_name %>
-        <% end %>
-      </div>
-      <div>
-        <%= link_to post_image_path(post_image.id) do %>
-          <%= attachment_image_tag post_image, :image, :fill, 200,200, class: "rounded" %>
-        <% end %>
-      </div>
-      <div id="post_image_<%= post_image.id %>">
-        <%= render "public/favorites/favorite", post_image: post_image %>
-      </div>
+        <div class="col-2 mx-4">
+          <div>
+            No.<%= i %>
+              <%= link_to user_path(post_image.user.id) do %>
+                <%= post_image.user.account_name %>
+              <% end %>
+          </div>
+          <%= link_to post_image_path(post_image.id) do %>
+            <%= attachment_image_tag post_image, :image, :fill, 200,200, class: "rounded" %>
+          <% end %>
+          <div id="post_image_<%= post_image.id %>">
+            <%= render "public/favorites/favorite", post_image: post_image %>
+          </div>
+        </div>
       <% end %>
     </div>
-  </div>
 </div>

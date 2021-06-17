@@ -11,6 +11,10 @@
             <td><%= f.attachment_field :image, placeholder: "画像" %></td>
           </tr>
           <tr>
+            <td><%= f.label :'タイトル' %></td>
+            <td><%= f.text_field :title, class: "form-control" %></td>
+          </tr>
+          <tr>
             <td><%= f.label :'投稿内容' %></td>
             <td><%= f.text_area :explain, class: "form-control" %></td>
           </tr>
