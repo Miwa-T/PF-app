@@ -7,21 +7,21 @@
       </div>
       <div class="col-10">
         <div class="row">
-          <div class="col-2">
-            <%= @user.account_name %>
+          <div class="col-4 font-weight-bold">
+            <font size="5"><%= @user.account_name %></font>
           </div>
-          <div class="col-10">
-            <% if @user == current_user %>
-              <%= link_to edit_user_path(@user), class: "btn btn-secondary" do %>
-                プロフィールを編集する<i class="fas fa-user-cog"></i>
-              <% end %>
-              <%= link_to new_post_image_path, class: "btn btn-secondary mx-5" do %>
+          <% if @user == current_user %>
+          <div class="col-8">
+            <%= link_to edit_user_path(@user), class: "btn btn-info mx-2" do %>
+              プロフィールを編集する<i class="fas fa-user-cog"></i>
+            <% end %>
+            <%= link_to new_post_image_path, class: "btn btn-info mx-2" do %>
                 投稿する<i class="fas fa-edit"></i>
               <% end %>
-            <% end %>
-            <div id="followbtn_<%= @user.id %>">
-              <%= render "public/users/followbtn", user: @user, follow: @follow %>
-            </div>
+          </div>
+          <% end %>
+          <div id="followbtn_<%= @user.id %>">
+            <%= render "public/users/followbtn", user: @user, follow: @follow %>
           </div>
         </div>
         <div class="row py-3">
@@ -40,13 +40,15 @@
               <%= @user.followers.count %>
             <% end %>
           </div>
-          <div class="col-6">
+        </div>
+        <div class="row py-3">
+          <div class="col">
             <%= @user.introduction %>
           </div>
         </div>
       </div>
     </div>
-    <div class="row col-10 mx-auto py-4" style="flex-wrap:wrap;">
+    <div class="row col-10 mx-auto py-4 flex-wrap">
       <% @post_images.each do |post_image| %>
         <div class="col-3 mx-4">
           <%= link_to post_image_path(post_image.id) do %>

@@ -1,15 +1,15 @@
 <% post_image.comments.each do |comment| %>
-  <div class="row">
+  <div class="row py-2">
     <div class="col-3">
       <%= attachment_image_tag comment.user, :profile_image, :fill, 100, 100, class: "rounded-circle" %>
     </div>
-    <div class="col-3">
+    <div class="col-3 my-auto">
       <%= comment.user.account_name %>
     </div>
-    <div class="col-3">
+    <div class="col-3 my-auto">
       <%= comment.comment %>
     </div>
-    <div class="col-3">
+    <div class="col-3 my-auto">
       <% if comment.user == current_user %>
         <%= link_to post_image_comment_path(comment.post_image, comment), method: :delete, remote: true, class: "btn btn-info", data: { confirm: "本当に削除しますか？" } do %>
           <span><i class="fas fa-trash-alt"></i></span>

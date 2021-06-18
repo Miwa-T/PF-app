@@ -1,10 +1,11 @@
 <!--投稿一覧画面-->
 <div class="container py-5">
   <h5>index</h5>
-    <%= render "search" %>
-      <div class="row" style="flex-wrap:wrap;">
+  <div class="row py-2">
+    <div class="col-9">
+      <div class="row flex-wrap">
           <% @post_images.each do |post_image| %>
-            <div class="col-2 mx-4">
+            <div class="col-3 mx-3">
               <div>
                 <%= link_to user_path(post_image.user.id) do %>
                   <%= post_image.user.account_name %>
@@ -19,4 +20,9 @@
             </div>
           <% end %>
       </div>
+    </div>
+    <div class="col-3 py-3">
+      <%= render "search" %>
+    </div>
+  </div>
 </div>
