@@ -1,23 +1,20 @@
 <!--Mypage-->
 <div class="container py-5">
-  <h5>Mypage</h5>
-    <div class="row pt-3">
-      <div class="col-2">
-        <%= attachment_image_tag @user, :profile_image, :fill, 120, 120, class: "rounded-circle" %>
+    <div class="row col-10 mx-auto pt-3">
+      <div class="col-3">
+        <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, class: "rounded-circle" %>
       </div>
-      <div class="col-10">
+      <div class="col-9">
         <div class="row">
           <div class="col-4 font-weight-bold">
             <font size="5"><%= @user.account_name %></font>
           </div>
           <% if @user == current_user %>
-          <div class="col-8">
-            <%= link_to edit_user_path(@user), class: "btn btn-info mx-2" do %>
-              プロフィールを編集する<i class="fas fa-user-cog"></i>
-            <% end %>
-            <%= link_to new_post_image_path, class: "btn btn-info mx-2" do %>
-                投稿する<i class="fas fa-edit"></i>
-              <% end %>
+          <div class="col-4">
+            <%= link_to "Profile edit", edit_user_path(@user), class: "btn btn-outline-dark" %>
+          </div>
+          <div class="col-4">
+            <%= link_to "New Post",new_post_image_path, class: "btn btn-outline-dark" %>
           </div>
           <% end %>
           <div id="followbtn_<%= @user.id %>">
@@ -25,19 +22,19 @@
           </div>
         </div>
         <div class="row py-3">
-          <div class="col-2">
-            投稿数:<%= @user.post_images.count %>
+          <div class="col-4">
+            Posts:<%= @user.post_images.count %>
           </div>
-          <div class="col-2">
-            フォロー数:
-            <%= link_to follows_user_path(@user.id) do %>
-              <%= @user.followings.count %>
-            <% end %>
-          </div>
-          <div class="col-2">
-            フォロワー数:
+          <div class="col-4">
+            Followers:
             <%= link_to followers_user_path(@user.id), id: "followers-count_#{@user.id}" do %>
               <%= @user.followers.count %>
+            <% end %>
+          </div>
+          <div class="col-4">
+            Follows:
+            <%= link_to follows_user_path(@user.id) do %>
+              <%= @user.followings.count %>
             <% end %>
           </div>
         </div>

@@ -48,9 +48,15 @@ class Public::PostImagesController < ApplicationController
     @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id)desc').limit(12).pluck(:post_image_id))
   end
 
+  def tag
+    @user = current_user
+    @hashtag = Tag.find_by(tag_name: params[:name])
+    @post_images = @hashtag.post_images
+  end
+
   private
   def post_image_params
-    params.require(:post_image).permit(:image, :explain, :title)
+    params.require(:post_image).permit(:image, :explain, :title, :caption)
   end
 
 end

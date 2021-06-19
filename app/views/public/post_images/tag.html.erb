@@ -1,0 +1,16 @@
+<div class="container">
+  <h5>tag #<%= @hashtag.tag_name %></h5>
+  <div class="row">
+    <div class="col">
+      <ul>
+      <% @post_images.each do |post_image| %>
+      <li>
+        <%= link_to post_image_path(post_image.id) do %>
+          <%= attachment_image_tag post_image, :image,:fill, 450,450, class: "rounded" %>
+        <% end %>
+      </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

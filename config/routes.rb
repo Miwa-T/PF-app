@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get :followers, on: :member
     end
     get 'post_images/ranking' => 'post_images#ranking', as: 'post_image_ranking'
+    get '/post_image/tag/:name', to: 'post_images#tag'
     resources :post_images do
       collection do
         resources :mypost_images, only: [:index]

@@ -1,28 +1,26 @@
 <!--投稿一覧画面-->
 <div class="container py-5">
-  <h5>index</h5>
-  <div class="row py-2">
-    <div class="col-9">
-      <div class="row flex-wrap">
+  <h4 class="text-center">index</h4>
+   <%= render "search" %>
+    <div class="row mx-auto py-2">
+      <div class="col">
+        <div class="row mx-auto">
           <% @post_images.each do |post_image| %>
-            <div class="col-3 mx-3">
+            <div class="col-4">
               <div>
                 <%= link_to user_path(post_image.user.id) do %>
                   <%= post_image.user.account_name %>
                 <% end %>
               </div>
-              <%= link_to post_image_path(post_image.id) do %>
-                <%= attachment_image_tag post_image, :image, :fill, 200,200, class: "rounded" %>
-              <% end %>
+                <%= link_to post_image_path(post_image.id) do %>
+                  <%= attachment_image_tag post_image, :image, :fill, 250,250, class: "rounded" %>
+                <% end %>
               <div id="post_image_<%= post_image.id %>">
                 <%= render "public/favorites/favorite", post_image: post_image %>
               </div>
             </div>
           <% end %>
       </div>
-    </div>
-    <div class="col-3 py-3">
-      <%= render "search" %>
     </div>
   </div>
 </div>

@@ -1,17 +1,21 @@
 <!--フォロワー一覧ページ-->
 <div class="container py-5">
-  <h5>フォロワー</h5>
-  <% @users.each do |user| %>
-    <div class="row align-items-center py-2">
-      <div class="col-2">
+  <div class="row col-8 mx-auto">
+    <div class="col">
+      <h5>Followers</h5>
+    </div>
+  </div>
+    <% @users.each do |user| %>
+    <div class="row col-8 mx-auto align-items-center py-2">
+      <div class="col-3">
          <%= attachment_image_tag user, :profile_image, :fill, 100, 100, class: "rounded-circle" %>
       </div>
-      <div class="col-2">
+      <div class="col-3">
         <%= link_to user_path(user) do %>
           <%= user.account_name %>
         <% end %>
       </div>
-      <div class="col-2">
+      <div class="col-3">
         投稿数:<%= user.post_images.count %>
       </div>
       <div id="followbtn_<%= @user.id %>">
