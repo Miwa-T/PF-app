@@ -1,43 +1,63 @@
 <!--Mypage-->
-<div class="container">
-  <h5>Mypage</h5>
-  <div class="row">
-    <div class="col">
-      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, class: "rounded-circle" %>
-      <%= @user.account_name %>
-      投稿数:<%= @user.post_images.count %>
-      <%= link_to follows_user_path(@user.id) do %>
-        フォロー数:<%= @user.followings.count %>
-      <% end %>
-
-      <%= link_to followers_user_path(@user.id), id: "followers-count_#{@user.id}" do %>
-        フォロワー数:<%= @user.followers.count %>
-      <% end %>
-
-      <%= @user.introduction %>
-
-      <div id="followbtn_<%= @user.id %>">
-        <%= render "public/users/followbtn", user: @user, follow: @follow %>
+<div class="container py-5">
+    <div class="row col-10 mx-auto pt-3">
+      <div class="col-3">
+        <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, class: "rounded-circle" %>
       </div>
-
-      <% if @user == current_user %>
-      <%= link_to "", edit_user_path(@user), class: "fas fa-user-cog fa-2x" %>
-      <%= link_to "", new_post_image_path, class: "fas fa-edit fa-2x" %>
-      <% end %>
-    </div>
-  </div>
-    <div class="row">
-      <div class="col">
-        <% @post_images.each do |post_image| %>
-          <div>
-            <%= link_to post_image_path(post_image.id) do %>
-              <%= attachment_image_tag post_image, :image, :fill, 200,200, class: "rounded" %>
+      <div class="col-9">
+        <div class="row">
+          <div class="col-4 font-weight-bold">
+            <font size="5"><%= @user.account_name %></font>
+          </div>
+          <% if @user == current_user %>
+          <div class="col-4">
+            <%= link_to "Profile edit", edit_user_path(@user), class: "btn btn-outline-dark" %>
+          </div>
+          <div class="col-4">
+            <%= link_to "New Post",new_post_image_path, class: "btn btn-outline-dark" %>
+          </div>
+          <% end %>
+          <div id="followbtn_<%= @user.id %>">
+            <%= render "public/users/followbtn", user: @user, follow: @follow %>
+          </div>
+        </div>
+        <div class="row py-3">
+          <div class="col-4">
+            Posts:<%= @user.post_images.count %>
+          </div>
+          <div class="col-4">
+            Followers:
+            <%= link_to followers_user_path(@user.id), id: "followers-count_#{@user.id}" do %>
+              <%= @user.followers.count %>
             <% end %>
           </div>
+          <div class="col-4">
+            Follows:
+            <%= link_to follows_user_path(@user.id) do %>
+              <%= @user.followings.count %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row py-3">
+          <div class="col">
+            <%= @user.introduction %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row col-10 mx-auto py-4 flex-wrap">
+      <% @post_images.each do |post_image| %>
+        <div class="col-3 mx-4">
+          <%= link_to post_image_path(post_image.id) do %>
+            <%= attachment_image_tag post_image, :image, :fill, 200,200, class: "rounded" %>
+          <% end %>
           <div id="post_image_<%= post_image.id %>">
             <%= render "public/favorites/favorite", post_image: post_image %>
           </div>
-          <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
+    <% if @user == current_user %>
+      <div id="calendar"></div>
+    <% end %>
 </div>

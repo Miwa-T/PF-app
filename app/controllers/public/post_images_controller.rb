@@ -9,6 +9,7 @@ class Public::PostImagesController < ApplicationController
   def show
     @post_image = PostImage.find(params[:id])
     @comment = Comment.new
+
   end
 
   def new
@@ -17,6 +18,7 @@ class Public::PostImagesController < ApplicationController
 
   def create
     @post_image = PostImage.new(post_image_params)
+
     @post_image.user_id = current_user.id
     if @post_image.save
       redirect_to post_image_path(@post_image.id)
@@ -31,8 +33,11 @@ class Public::PostImagesController < ApplicationController
 
   def update
     @post_image = PostImage.find(params[:id])
-    @post_image.update(post_image_params)
-    redirect_to post_image_path(@post_image.id)
+    if @post_image.update(post_image_params)
+      redirect_to post_image_path(@post_image.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -41,9 +46,19 @@ class Public::PostImagesController < ApplicationController
     redirect_to user_path(@post_image.user)
   end
 
+  def ranking
+    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id)desc').limit(9).pluck(:post_image_id))
+  end
+
+  def tag
+    @user = current_user
+    @hashtag = Tag.find_by(tag_name: params[:name])
+    @post_images = @hashtag.post_images
+  end
+
   private
   def post_image_params
-    params.require(:post_image).permit(:image, :explain)
+    params.require(:post_image).permit(:image, :explain, :title, :caption)
   end
 
 end

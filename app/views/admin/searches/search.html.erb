@@ -1,0 +1,36 @@
+<!--管理者側検索結果画面-->
+<div class="container">
+  <h5>Search for User</h5>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>ユーザー名</th>
+            <th>メールアドレス</th>
+            <th>ユーザーステータス</th>
+          </tr>
+        </thead>
+        <% @users.each do |user| %>
+        <tbody>
+          <tr>
+            <td><%= user.id %></td>
+            <td>
+              <%= link_to admin_user_path(user) do %>
+              <%= user.account_name %>
+              <% end %>
+            </td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.is_deleted == 'Available' %>退会
+              <% else %>有効
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,35 +1,37 @@
 <!--管理者側User一覧画面-->
-<div class="container">
+<div class="container py-5">
   <h5>会員一覧</h5>
-  <div class="row">
+  <%= render "search" %>
+  <div class="row py-3">
     <div class="col">
-      <% @users.each do |user| %>
       <table class="table">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>ユーザー名</th>
+            <th>メールアドレス</th>
+            <th>ユーザーステータス</th>
+          </tr>
+        </thead>
+        <% @users.each do |user| %>
         <tbody>
           <tr>
-            <td>会員ID</td>
             <td><%= user.id %></td>
-          </tr>
-          <tr>
-            <td>ユーザー名</td>
-            <td><%= user.account_name %></td>
-          </tr>
-          <tr>
-            <td>メールアドレス</td>
-            <td><%= user.email %></td>
-          </tr>
-          <tr>
-            <td>ユーザーステータス</td>
             <td>
-              <%= user.is_deleted %>
-              <% if user == "Available" %>退会
+              <%= link_to admin_user_path(user) do %>
+              <%= user.account_name %>
+              <% end %>
+            </td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.is_deleted == 'Available' %>退会
               <% else %>有効
               <% end %>
             </td>
           </tr>
         </tbody>
+        <% end %>
       </table>
-      <% end %>
     </div>
   </div>
 </div>

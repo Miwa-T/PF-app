@@ -1,52 +1,46 @@
- <!--管理者側会員編集ページ-->
-<div class="container">
-  <h5>会員編集ページ</h5>
-  <div class="row">
-    <div class="col">
-      <%= form_with model: @user, local: true do |f| %>
-          <table class="table table-borderless">
-            <tbody>
-              <tr>
-                <td>会員ID</td>
-                <td><%= @user.id %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :'名前' %></td>
-                <td><%= f.text_field :name, autocomplete: "name" %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :'アカウント名' %></td>
-                <td><%= f.text_field :account_name, autocomplete: "account_name" %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :'メールアドレス' %></td>
-                <td><%= f.email_field :email, autocomplete: "email" %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :'電話番号' %></td>
-                <td><%= f.text_field :number, autocomplete: "number" %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :'自己紹介' %></td>
-                <td><%= f.text_area :introduction, autocomplete: "introduction" %></td>
-              </tr>
-              <tr>
-                <td><%= f.label :'ユーザーステータス' %></td>
-                <td>
-                  <%= f.radio_button :is_deleted, true %>
-                  <%= f.label :is_deleted, '有効', value: true %>
-                  <%= f.radio_button :is_deleted, false %>
-                  <%= f.label :is_deleted, '退会', value: false %>
-                </td>
-              </tr>
-              <tr>
-                <td></td>
-                <!--変更保存後は詳細ページに戻る-->
-                <td><%= f.submit '変更を保存する', class: "btn btn-info" %></td>
-              </tr>
-            </tbody>
-          </table>
+<!--管理者側会員編集ページ-->
+<div class="container py-5">
+  <div class="card">
+    <div class="card-header font-weight-bold text-center">会員編集</div>
+      <div class="card-body">
+        <%= form_with model: @user,url: admin_user_path, local: true do |f| %>
+          <form>
+            <div class="form-group row justify-content-center">
+              <%= f.label :'名前', class: "col-3" %>
+              <%= f.text_field :name, autocomplete: "name", class: "form-control col-4" %>
+            </div>
+            <div class="form-group row justify-content-center">
+              <%= f.label :'アカウント名', class: "col-3" %>
+              <%= f.text_field :account_name, autocomplete: "account_name", class: "form-control col-4" %>
+            </div>
+            <div class="form-group row justify-content-center">
+              <%= f.label :'メールアドレス', class: "col-3" %>
+              <%= f.email_field :email, autocomplete: "email", class: "form-control col-4" %>
+            </div>
+            <div class="form-group row justify-content-center">
+              <%= f.label :'電話番号', class: "col-3" %>
+              <%= f.text_field :number, autocomplete: "number", class: "form-control col-4" %>
+            </div>
+            <div class="form-group row justify-content-center">
+              <%= f.label :'自己紹介', class: "col-3" %>
+              <%= f.text_area :introduction, autocomplete: "introduction", class: "form-control col-4" %>
+            </div>
+            <div class="radio row justify-content-center">
+              <%= f.label :'ユーザーステータス', class: "col-3" %>
+              <span class="col-2">
+                <%= f.radio_button :is_deleted, "Invalid" %>
+                <%= f.label :is_deleted, '有効', value: false %>
+              </span>
+              <span class="col-2">
+                <%= f.radio_button :is_deleted, "Available" %>
+                <%= f.label :is_deleted, '退会', value: true %>
+              </span>
+            </div>
+            <div class="form-group row justify-content-center">
+              <%= f.submit '変更を保存する', class: "btn btn-info" %>
+            </div>
+          </form>
         <% end %>
-    </div>
+      </div>
   </div>
 </div>

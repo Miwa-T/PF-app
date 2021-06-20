@@ -1,45 +1,43 @@
-<div class="container">
-  <%= @user.account_name %>さんの会員詳細
-  <%= link_to "編集する",edit_admin_user_path(@user) %>
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>会員ID</td>
-            <td><%= @user.id %></td>
-          </tr>
-          <tr>
-            <td>名前</td>
-            <td><%= @user.name %></td>
-          </tr>
-          <tr>
-            <td>アカウント名</td>
-            <td><%= @user.account_name %></td>
-          </tr>
-          <tr>
-            <td>メールアドレス</td>
-            <td><%= @user.email %></td>
-          </tr>
-          <tr>
-            <td>電話番号</td>
-            <td><%= @user.number %></td>
-          </tr>
-          <tr>
-            <td>自己紹介</td>
-            <td><%= @user.introduction %></td>
-          </tr>
-          <tr>
-            <td>ユーザーステータス</td>
-            <td>
-              <%= user.is_deleted %>
-                <% if user == "Available" %>退会
-                <% else %>有効
-                <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<!--管理者側User詳細-->
+<div class="container py-5">
+  <div class="card">
+    <div class="card-header font-weight-bold text-center">
+      <%= @user.account_name %>さんの会員詳細
+      <%= link_to "編集する",edit_admin_user_path(@user), class: "btn btn-info mx-3" %>
     </div>
+      <div class="card-body">
+        <div class="row col-6 mx-auto text-center py-3">
+          <div class="col-6">会員ID</div>
+          <div class="col-6"><%= @user.id %></div>
+        </div>
+        <div class="row col-6 mx-auto text-center py-3">
+          <div class="col-6">名前</div>
+          <div class="col-6"><%= @user.name %></div>
+        </div>
+        <div class="row col-6 mx-auto text-center py-3">
+          <div class="col-6">アカウント名</div>
+          <div class="col-6"><%= @user.account_name %></div>
+        </div>
+        <div class="row col-6 mx-auto text-center py-3">
+          <div class="col-6">メールアドレス</div>
+          <div class="col-6"><%= @user.email %></div>
+        </div>
+        <div class="row col-6 mx-auto text-center py-3">
+          <div class="col-6">電話番号</div>
+          <div class="col-6"><%= @user.number %></div>
+        </div>
+        <div class="row col-6 mx-auto text-center py-3">
+          <div class="col-6">自己紹介</div>
+          <div class="col-6"><%= @user.introduction %></div>
+        </div>
+        <div class="row col-6 mx-auto text-center py-3">
+          <div class="col-6">ユーザーステータス</div>
+          <div class="col-6">
+            <% if @user.is_deleted == "Available" %>退会
+            <% else %>有効
+            <% end %>
+          </div>
+        </div>
+      </div>
   </div>
 </div>

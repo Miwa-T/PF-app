@@ -1,37 +1,60 @@
 <!--投稿詳細画面-->
-<div class="container">
-  <div class="row">
-    <div class="col">
-       <%= attachment_image_tag @post_image.user, :profile_image,:fill, 100,100, class: "rounded-circle" %>
-       <%= link_to user_path(@post_image.user.id) do %>
-         <%= @post_image.user.account_name %>
-       <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <%= attachment_image_tag @post_image, :image,:fill, 450,450, class: "rounded" %>
-      <div id="post_image_<%= @post_image.id %>">
-        <%= render "public/favorites/favorite", post_image: @post_image %>
-      </div>
-    </div>
-    <div class="col-6">
-      <p>投稿内容</p>
-      <%= @post_image.explain %>
-      <% if @post_image.user == current_user %>
-        <%= link_to "編集", edit_post_image_path(@post_image.id), class: "btn btn-info" %>
-        <%= link_to "削除", post_image_path(@post_image.id), method: :delete, class: "btn btn-info" %>
-      <% end %>
-      <!--コメント表示-->
-      <div class="comment-table_<%= @post_image.id %>">
-        <%= render "public/comments/comment", post_image: @post_image %>
-      </div>
-      <div class="new-comment">
-        <%= form_with(model: [@post_image, @comment], remote: true) do |f| %>
-          <%= f.text_area :comment, rows:'3', class: "form-control" %>
-          <%= f.submit 'コメントを投稿する', class: "btn btn-info" %>
+<div class="container py-5">
+  <div class="row col-8 mx-auto">
+    <div class="col text-right my-auto">
+       <% if @post_image.user == current_user %>
+         <%= link_to edit_post_image_path(@post_image.id), class: "btn btn-outline-dark mx-3" do %>
+           <span><i class="fas fa-edit"></i></span>
+         <% end %>
+         <%= link_to post_image_path(@post_image.id), method: :delete, class: "btn btn-outline-dark mx-3", data: { confirm: "本当に削除しますか？" } do %>
+          <span><i class="fas fa-trash-alt"></i></span>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
+  <div class="row col-6 mx-auto">
+    <div class="col">
+      <%= attachment_image_tag @post_image.user, :profile_image,:fill, 70,70, class: "rounded-circle" %>
+      <%= link_to user_path(@post_image.user.id), class: "mx-3" do %>
+        <%= @post_image.user.account_name %>
+      <% end %>
+    </div>
+  </div>
+    <!--画像部分-->
+    <div class="row col-6 mx-auto">
+      <div class="col">
+        <%= attachment_image_tag @post_image, :image, :fill, 500,500, class: "rounded" %>
+        <div id="post_image_<%= @post_image.id %>">
+          <%= render "public/favorites/favorite", post_image: @post_image %>
+        </div>
+        <%= render_with_tags(@post_image.caption) %>
+      </div>
+    </div>
+      <!--投稿内容-->
+      <div class="row col-6 mx-auto py-3">
+        <div class="col">
+          <h5 class="py-3"><%= @post_image.title %></h5>
+          <p><%= @post_image.explain %></p>
+        </div>
+      </div>
+      <!--コメント表示-->
+      <div class="row col-6 mx-auto">
+        <div class="col">
+          <div class="comment-table_<%= @post_image.id %>">
+            <%= render "public/comments/comment", post_image: @post_image %>
+          </div>
+        </div>
+      </div>
+      <div class="row col-6 mx-auto py-3">
+        <div class="col">
+          <div class="new-comment">
+            <%= form_with(model: [@post_image, @comment], remote: true) do |f| %>
+            <%= f.text_area :comment, rows:'3', class: "form-control" %>
+          </div>
+        </div>
+          <div class="col-3 my-auto">
+            <%= f.submit 'コメント投稿', class: "btn btn-info" %>
+            <% end %>
+        </div>
+      </div>
 </div>

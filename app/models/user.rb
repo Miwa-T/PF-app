@@ -7,17 +7,17 @@ class User < ApplicationRecord
   has_many :post_images, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   has_many :active_relationsips, class_name: "Relationship", foreign_key: :following_id
   has_many :followings, through: :active_relationsips, source: :follower
-  
+
   has_many :passive_relationsips, class_name: "Relationship", foreign_key: :follower_id
   has_many :followers, through: :passive_relationsips, source: :following
-  
+
   def followed_by?(user)
     passive_relationsips.find_by(following_id: user.id).present?
   end
-  
+
   validates :email, presence: true
   validates :name, presence: true, uniqueness: true
   validates :account_name, presence: true, uniqueness: true
@@ -32,7 +32,13 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (self.is_deleted == "Invalid")
   end
-  
-  
+
+  def self.looks(searches, words)
+    if searches == "perfect_match"
+      @user = User.where("account_name LIKE ?", "#{words}")
+    else
+      @user = User.where("account_name LIKE ?", "%#{words}%")
+    end
+  end
 
 end
