@@ -1,16 +1,28 @@
-<div class="container">
-  <h5>tag #<%= @hashtag.tag_name %></h5>
+<!--タグ詳細-->
+<div class="container py-5">
   <div class="row">
     <div class="col">
-      <ul>
-      <% @post_images.each do |post_image| %>
-      <li>
-        <%= link_to post_image_path(post_image.id) do %>
-          <%= attachment_image_tag post_image, :image,:fill, 450,450, class: "rounded" %>
-        <% end %>
-      </li>
-      <% end %>
-      </ul>
+      <h5 class="text-center">#<%= @hashtag.tag_name %></h5>
     </div>
+  </div>
+  <div class="row mx-auto py-2">
+    <% @post_images.each do |post_image| %>
+    <div class="col-4 py-2">
+      <div>
+        <%= attachment_image_tag post_image.user, :profile_image,:fill, 60,60, class: "rounded-circle" %>
+        <%= link_to user_path(post_image.user.id) do %>
+          <%= post_image.user.account_name %>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to post_image_path(post_image.id) do %>
+          <%= attachment_image_tag post_image, :image,:fill, 280,280, class: "rounded" %>
+        <% end %>
+      </div>
+      <div id="post_image_<%= post_image.id %>">
+        <%= render "public/favorites/favorite", post_image: post_image %>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>

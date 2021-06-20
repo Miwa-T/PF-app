@@ -8,6 +8,8 @@ class PostImage < ApplicationRecord
 
   validates :image, presence: true
   validates :explain, presence: true, length: { maximum: 200 }
+  validates :title, presence: true
+  validates :caption, presence: true
 
   attachment :image
 

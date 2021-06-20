@@ -1,17 +1,41 @@
 <!--ランキングページ-->
 <div class="container py-5">
-  <h4 class="text-center">Ranking</h4>
-    <div class="row flex-wrap mx-auto py-4">
+  <div class="row text-right">
+    <div class="col">
+      <%= render "search" %>
+    </div>
+  </div>
+  <div class="row py-4">
+    <div class="col">
+      <h4 class="text-center underline">Ranking</h4>
+    </div>
+  </div>
+    <div class="row mx-auto py-2">
       <% @all_ranks.each.with_index(1) do |post_image,i| %>
-        <div class="col-3 mx-3">
+        <div class="col-4 py-2">
+          <div class="py-2">
+            <% case i when 1 %>
+              <i class="fas fa-crown fa-2x" style='color: #ffd700;'></i>
+              <p class="crown-p"><%= i %></p>
+            <% when 2 %>
+              <i class="fas fa-crown fa-2x" style='color: #c0c0c0;'></i>
+              <p class="crown-p"><%= i %></p>
+            <% when 3 %>
+              <i class="fas fa-crown fa-2x" style='color: #ac6b25;'></i>
+              <p class="crown-p"><%= i %></p>
+            <% else %>
+              <i class="fas fa-crown fa-2x crown" style='color: #89c3eb;'></i>
+              <p class="crown-p"><%= i %></p>
+            <% end %>
+          </div>
           <div>
-            No.<%= i %>
-              <%= link_to user_path(post_image.user.id) do %>
-                <%= post_image.user.account_name %>
-              <% end %>
+            <%= attachment_image_tag post_image.user, :profile_image,:fill, 60,60, class: "rounded-circle" %>
+            <%= link_to user_path(post_image.user.id) do %>
+              <%= post_image.user.account_name %>
+            <% end %>
           </div>
           <%= link_to post_image_path(post_image.id) do %>
-            <%= attachment_image_tag post_image, :image, :fill, 250,250, class: "rounded" %>
+            <%= attachment_image_tag post_image, :image, :fill, 280,280, class: "rounded" %>
           <% end %>
           <div id="post_image_<%= post_image.id %>">
             <%= render "public/favorites/favorite", post_image: post_image %>

@@ -21,7 +21,6 @@ class Public::PostImagesController < ApplicationController
 
     @post_image.user_id = current_user.id
     if @post_image.save
-
       redirect_to post_image_path(@post_image.id)
     else
       render :new
@@ -34,8 +33,11 @@ class Public::PostImagesController < ApplicationController
 
   def update
     @post_image = PostImage.find(params[:id])
-    @post_image.update(post_image_params)
-    redirect_to post_image_path(@post_image.id)
+    if @post_image.update(post_image_params)
+      redirect_to post_image_path(@post_image.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -45,7 +47,7 @@ class Public::PostImagesController < ApplicationController
   end
 
   def ranking
-    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id)desc').limit(12).pluck(:post_image_id))
+    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id)desc').limit(9).pluck(:post_image_id))
   end
 
   def tag
