@@ -1,8 +1,10 @@
-<% if @user.errors.any? %>
-  <%= @user.errors.count %>件のエラーが発生しました
-  <% @user.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
+<% if model.errors.any? %>
+  <div class="alert">
+    <ul>
+      <% model.errors.full_messages.each do |message| %>
+        <li class="error_message"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
-  
-  
+

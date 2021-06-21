@@ -76,3 +76,4 @@ gem 'font-awesome-sass', '~> 5.13'
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'devise-i18n'

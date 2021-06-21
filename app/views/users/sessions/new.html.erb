@@ -6,7 +6,9 @@
         <div class="card-header font-weight-bold text-center">Log in</div>
           <div class="card-body">
             <%= form_with model: @user,url: user_session_path, local: true do |f| %>
-            <form>
+            <% if flash[:alert] %>
+              <p class="alert"><%= alert %></p>
+            <% end %>
               <div class="form-group row justify-content-center">
                 <%= f.label :'メールアドレス', class: "col-4" %>
                 <%= f.email_field :email, autocomplete: "email", class: "form-control col-4" %>
@@ -19,7 +21,6 @@
               <div class="action row justify-content-center">
                 <%= f.submit "ログインする",class: "btn btn-info col-3" %>
               </div>
-            </form>
             <% end %>
             <div class="text-center pt-3">
               <%= link_to "アカウントを新規登録する", new_user_registration_path %>
