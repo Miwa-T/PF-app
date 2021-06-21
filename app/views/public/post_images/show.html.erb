@@ -49,6 +49,7 @@
         <div class="col">
           <div class="new-comment">
             <%= form_with(model: [@post_image, @comment], remote: true) do |f| %>
+            <%= render "layouts/error", model: f.object %>
             <%= f.text_area :comment, rows:'3', class: "form-control" %>
           </div>
         </div>

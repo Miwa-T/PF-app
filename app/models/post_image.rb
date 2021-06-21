@@ -5,7 +5,6 @@ class PostImage < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
-
   validates :image, presence: true
   validates :explain, presence: true, length: { maximum: 200 }
   validates :title, presence: true

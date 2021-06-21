@@ -5,9 +5,8 @@
         <div class="card">
           <div class="card-header font-weight-bold text-center">Sign up</div>
             <div class="card-body">
-              <%= form_with model:@user,url:user_registration_path, id:'new_user', class: 'new_user', local: true do |f| %>
+              <%= form_with model: @user,url: user_registration_path, id:'new_user', class: 'new_user', local: true do |f| %>
               <%= render "users/shared/error_messages", resource: resource %>
-              <form>
                 <div class="form-group row justify-content-center">
                   <div class="col-3">
                     <%= f.label :'名前' %>
@@ -76,7 +75,6 @@
                 <div class="action row justify-content-center">
                 <%= f.submit '新規登録する', class: "btn btn-info col-2" %>
                 </div>
-              </form>
               <% end %>
              <div class="text-center py-3">すでにアカウント登録されている方は<%= link_to "こちら", new_user_session_path %>からログインしてください</div>
             </div>
