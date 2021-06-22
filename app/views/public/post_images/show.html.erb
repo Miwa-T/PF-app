@@ -23,7 +23,7 @@
     <!--画像部分-->
     <div class="row col-6 mx-auto">
       <div class="col">
-        <%= attachment_image_tag @post_image, :image, :fill, 500,500, class: "rounded" %>
+        <%= attachment_image_tag @post_image, :image, :fill, 500,500, class: "rounded pt-2" %>
         <div id="post_image_<%= @post_image.id %>">
           <%= render "public/favorites/favorite", post_image: @post_image %>
         </div>

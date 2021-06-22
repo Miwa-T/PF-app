@@ -1,32 +1,60 @@
 <!--管理者側会員編集ページ-->
 <div class="container py-5">
-  <div class="card">
-    <div class="card-header font-weight-bold text-center">会員編集</div>
-      <div class="card-body">
-        <%= form_with model: @user,url: admin_user_path, local: true do |f| %>
-          <form>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header font-weight-bold text-center">会員編集</div>
+          <div class="card-body">
+            <%= form_with model: @user,url: admin_user_path, local: true do |f| %>
             <div class="form-group row justify-content-center">
-              <%= f.label :'名前', class: "col-3" %>
-              <%= f.text_field :name, autocomplete: "name", class: "form-control col-4" %>
+              <div class="col-7">
+                <%= render "layouts/error", model: f.object %>
+              </div>
             </div>
             <div class="form-group row justify-content-center">
-              <%= f.label :'アカウント名', class: "col-3" %>
-              <%= f.text_field :account_name, autocomplete: "account_name", class: "form-control col-4" %>
+              <div class="col-3">
+                <%= f.label :'名前' %>
+              </div>
+              <div class="col-4">
+                <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
+              </div>
             </div>
             <div class="form-group row justify-content-center">
-              <%= f.label :'メールアドレス', class: "col-3" %>
-              <%= f.email_field :email, autocomplete: "email", class: "form-control col-4" %>
+              <div class="col-3">
+                <%= f.label :'アカウント名' %>
+              </div>
+              <div class="col-4">
+                <%= f.text_field :account_name, autocomplete: "account_name", class: "form-control" %>
+              </div>
             </div>
             <div class="form-group row justify-content-center">
-              <%= f.label :'電話番号', class: "col-3" %>
-              <%= f.text_field :number, autocomplete: "number", class: "form-control col-4" %>
+              <div class="col-3">
+                <%= f.label :'メールアドレス' %>
+              </div>
+              <div class="col-4">
+                <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+              </div>
             </div>
             <div class="form-group row justify-content-center">
-              <%= f.label :'自己紹介', class: "col-3" %>
-              <%= f.text_area :introduction, autocomplete: "introduction", class: "form-control col-4" %>
+              <div class="col-3">
+                 <%= f.label :'電話番号' %>
+              </div>
+              <div class="col-4">
+                <%= f.text_field :number, autocomplete: "number", class: "form-control" %>
+              </div>
             </div>
-            <div class="radio row justify-content-center">
-              <%= f.label :'ユーザーステータス', class: "col-3" %>
+            <div class="form-group row justify-content-center">
+              <div class="col-3">
+                <%= f.label :'自己紹介' %>
+              </div>
+              <div class="col-4">
+                <%= f.text_area :introduction, autocomplete: "introduction", class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-group row justify-content-center">
+              <div class="col-3">
+                 <%= f.label :'ユーザーステータス' %>
+              </div>
               <span class="col-2">
                 <%= f.radio_button :is_deleted, "Invalid" %>
                 <%= f.label :is_deleted, '有効', value: false %>
@@ -39,8 +67,9 @@
             <div class="form-group row justify-content-center">
               <%= f.submit '変更を保存する', class: "btn btn-info" %>
             </div>
-          </form>
-        <% end %>
+          <% end %>
+          </div>
       </div>
+    </div>
   </div>
 </div>

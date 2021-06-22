@@ -29,7 +29,6 @@ Rails.application.routes.draw do
 
   get "users" => "public/users#index"
 
-
   devise_for :admins, controllers: {
   sessions: 'admins/sessions',
   password: 'admins/passwords',

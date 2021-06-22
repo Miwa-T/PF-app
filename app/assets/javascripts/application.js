@@ -41,7 +41,21 @@ $(function () {
       $(document).on('turbolinks:before-cache', clearCalendar);
 
       $('#calendar').fullCalendar({
-          events: '/post_images/mypost_images.json'
+          events: '/post_images/mypost_images.json',
+                //ボタンのレイアウト
+                header: {
+                    left: '',
+                    center: 'title',
+                    right: 'today prev,next'
+                },
+                //終了時刻がないイベントの表示間隔
+                defaultTimedEventDuration: '03:00:00',
+                //イベントの時間表示を24時間表示に
+                timeFormat: "HH:mm",
+                //カレンダーの色を変える
+                eventColor: '#008db7',
+                //イベントの文字色を変える
+                eventTextColor: '#ffffff'
       });
     }
   });

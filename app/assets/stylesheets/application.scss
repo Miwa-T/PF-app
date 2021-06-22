@@ -18,6 +18,9 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+
+
+
  .like-btn {
  color: #fa8072;
  }
@@ -56,4 +59,12 @@
 
 .error_message {
  list-style: none;
+}
+
+#error_explanation {
+ color:#262626;
+ background:#FFEBE8;
+ text-align: center;
+ border:2px solid #990000;
+ padding:12px; font-weight:850;
 }

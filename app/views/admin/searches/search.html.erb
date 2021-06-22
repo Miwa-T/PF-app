@@ -3,6 +3,9 @@
   <h5>Search for User</h5>
   <div class="row">
     <div class="col">
+      <% if @users.empty? %>
+        <h5 class="text-center py-4">該当するユーザーがいません</h5>
+      <% else %>
       <table class="table">
         <thead>
           <tr>
@@ -31,6 +34,7 @@
         </tbody>
         <% end %>
       </table>
+      <% end %>
     </div>
   </div>
 </div>
