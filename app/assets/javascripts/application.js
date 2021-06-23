@@ -24,21 +24,8 @@
 //= require_tree .
 
 /* global $*/
-$(function () {
-  $(document).on('turbolinks:load', function (){
-    if($('#calendar').length){
-      function eventCalendar() {
-        return $('#calendar').fullCalendar({
-        });
-      };
-      function clearCalendar() {
-        $('#calendar').html('');
-      };
 
-      $(document).on('turbolinks:load', function (){
-          eventCalendar();
-      });
-      $(document).on('turbolinks:before-cache', clearCalendar);
+  $(document).on('turbolinks:load', function (){
 
       $('#calendar').fullCalendar({
           events: '/post_images/mypost_images.json',
@@ -57,6 +44,6 @@ $(function () {
                 //イベントの文字色を変える
                 eventTextColor: '#ffffff'
       });
-    }
-  });
-});
+    })
+
+
