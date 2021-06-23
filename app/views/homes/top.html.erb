@@ -1,13 +1,42 @@
-<div class="container my-5">
-  <div class="row col-8 mx-auto">
+<div class="container pt-5">
+  <div class="row col-6 mx-auto">
     <div class="col">
-      <%= image_tag 'img/Top.jpg', size: '600x420' %>
-      <p class="text-center mt-4">
-       Welcome to "Bread Life"</br>
-       美味しいパンと過ごす時間は、どんな時でも私たちを癒してくれる素敵な時間です。</br>
-       そんな時間を切り取って、記録して、共有してください。</br>
-       皆様にとって素敵なBread Lifeを過ごせますように。
-     </P>
+        <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <%= image_tag 'img/Top3.jpg', size: '500x500' %>
+                </div>
+                <div class="carousel-item">
+                   <%= image_tag 'img/Top5.jpg', size: '500x500' %>
+                </div>
+                 <div class="carousel-item">
+                    <%= image_tag 'img/Top6.jpg', size: '500x500' %>
+                 </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
     </div>
+  </div>
+  <div class="row col-8 mx-auto">
+      <div class="col">
+          <p class="text-center my-4">
+            Welcome to "Bread Life"</br>
+            美味しいパンと過ごす時間は、どんな時でも私たちを癒してくれる素敵な時間です。</br>
+            そんな時間を切り取って、記録して、共有してください。</br>
+            皆様にとって素敵なBread Lifeを過ごせますように。
+          </P>
+      </div>
   </div>
 </div>

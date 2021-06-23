@@ -19,8 +19,6 @@
  @import 'font-awesome';
 
 
-
-
  .like-btn {
  color: #fa8072;
  }
@@ -35,8 +33,31 @@
 }
 
 .underline {
- text-decoration: underline;
+ position: relative;
+ display: inline-block;
+ padding: 0 65px;
+ text-align: center;
 }
+
+.underline:before,
+.underline:after {
+  position: absolute;
+  top: calc(50% - 3px);
+  width: 50px;
+  height: 6px;
+  content: '';
+  border-top: solid 2px #000;
+  border-bottom: solid 2px #000;
+}
+
+.underline:before {
+  left: 0;
+}
+
+.underline:after {
+  right: 0;
+}
+
 
 .crown {
  position: relative;
