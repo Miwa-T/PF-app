@@ -33,8 +33,10 @@
       <!--投稿内容-->
       <div class="row col-6 mx-auto py-3">
         <div class="col">
-          <h5 class="py-3"><%= @post_image.title %></h5>
-          <p><%= @post_image.explain %></p>
+          <div>
+            <h5 class="py-3"><%= @post_image.title %></h5>
+            <p class="overflow-wrap"><%= @post_image.explain %></p>
+          </div>
         </div>
       </div>
       <!--コメント表示-->
