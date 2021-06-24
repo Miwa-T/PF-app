@@ -18,9 +18,11 @@
       <div class="col-3">
         投稿数:<%= user.post_images.count %>
       </div>
+       <% if current_user != user %>
       <div id="followbtn_<%= @user.id %>">
         <%= render "public/users/followbtn", user: @user, follow: @follow %>
       </div>
+      <% end %>
     </div>
   <% end %>
 </div>
