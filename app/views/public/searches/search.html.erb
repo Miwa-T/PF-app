@@ -5,6 +5,9 @@
       <h5>Search for User</h5>
     </div>
   </div>
+  <% if @users.empty? %>
+    <h5 class="text-center py-4">該当するユーザーがいません</h5>
+  <% end %>
   <% @range == "User" %>
   <% @users.each do |user| %>
     <div class="row col-8 mx-auto align-items-center py-2">

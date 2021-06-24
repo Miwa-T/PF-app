@@ -3,13 +3,11 @@ class Public::PostImagesController < ApplicationController
 
   def index
     @post_images = PostImage.all
-
   end
 
   def show
     @post_image = PostImage.find(params[:id])
     @comment = Comment.new
-
   end
 
   def new
@@ -57,9 +55,8 @@ class Public::PostImagesController < ApplicationController
   end
 
   private
+
   def post_image_params
     params.require(:post_image).permit(:image, :explain, :title, :caption)
   end
-
 end
-

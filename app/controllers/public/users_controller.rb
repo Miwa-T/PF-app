@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    redirect_to  new_user_registration_path
+    redirect_to new_user_registration_path
   end
 
   def show
@@ -48,6 +48,7 @@ class Public::UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :account_name, :email, :number, :profile_image, :introduction)
   end

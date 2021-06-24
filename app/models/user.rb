@@ -27,10 +27,10 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  enum is_deleted: {Available: true, Invalid: false}
+  enum is_deleted: { Available: true, Invalid: false }
 
   def active_for_authentication?
-    super && (self.is_deleted == "Invalid")
+    super && (is_deleted == "Invalid")
   end
 
   def self.looks(searches, words)
@@ -40,5 +40,4 @@ class User < ApplicationRecord
       @user = User.where("account_name LIKE ?", "%#{words}%")
     end
   end
-
 end

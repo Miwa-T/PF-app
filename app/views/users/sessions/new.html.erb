@@ -3,7 +3,7 @@
   <div class="row col-8 mx-auto">
     <div class="col">
       <div class="card">
-        <div class="card-header font-weight-bold text-center">Log in</div>
+        <div class="card-header font-weight-bold text-center title">Log in</div>
           <div class="card-body">
             <%= form_with model: @user,url: user_session_path, local: true do |f| %>
             <% if flash[:alert] %>

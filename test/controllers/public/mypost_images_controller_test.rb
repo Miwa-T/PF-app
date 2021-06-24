@@ -5,5 +5,4 @@ class Public::MypostImagesControllerTest < ActionDispatch::IntegrationTest
     get public_mypost_images_index_url
     assert_response :success
   end
-
 end

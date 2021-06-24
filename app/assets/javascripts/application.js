@@ -24,25 +24,26 @@
 //= require_tree .
 
 /* global $*/
-$(function () {
-  $(document).on('turbolinks:load', function (){
-    if($('#calendar').length){
-      function eventCalendar() {
-        return $('#calendar').fullCalendar({
-        });
-      };
-      function clearCalendar() {
-        $('#calendar').html('');
-      };
 
-      $(document).on('turbolinks:load', function (){
-          eventCalendar();
-      });
-      $(document).on('turbolinks:before-cache', clearCalendar);
+  $(document).on('turbolinks:load', function (){
 
       $('#calendar').fullCalendar({
-          events: '/post_images/mypost_images.json'
+          events: '/post_images/mypost_images.json',
+                //ボタンのレイアウト
+                header: {
+                    left: '',
+                    center: 'title',
+                    right: 'today prev,next'
+                },
+                //終了時刻がないイベントの表示間隔
+                defaultTimedEventDuration: '03:00:00',
+                //イベントの時間表示を24時間表示に
+                timeFormat: "HH:mm",
+                //カレンダーの色を変える
+                eventColor: '#008db7',
+                //イベントの文字色を変える
+                eventTextColor: '#ffffff'
       });
-    }
-  });
-});
+    })
+
+

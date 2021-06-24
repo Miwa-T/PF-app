@@ -21,8 +21,8 @@ class PostImage < ApplicationRecord
   end
 
   after_create do
-    post_image = PostImage.find_by(id: self.id)
-    tags = self.caption.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    post_image = PostImage.find_by(id: id)
+    tags = caption.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     post_image.tags = []
     tags.uniq.map do |tag|
       hashtag = Tag.find_or_create_by(tag_name: tag.downcase.delete('#'))
@@ -31,13 +31,12 @@ class PostImage < ApplicationRecord
   end
 
   before_update do
-    post_image = PostImage.find_by(id: self.id)
+    post_image = PostImage.find_by(id: id)
     post_image.tags.clear
-    tags = self.caption.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    tags = caption.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     tags.uniq.map do |tag|
       hashtag = Tag.find_or_create_by(tag_name: tag.downcase.delete('#'))
       post_image.tags << hashtag
     end
   end
-
 end

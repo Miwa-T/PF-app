@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-  sessions: 'users/sessions',
-  password: 'users/passwords',
-  registrations: 'users/registrations'
-}
+    sessions: 'users/sessions',
+    password: 'users/passwords',
+    registrations: 'users/registrations',
+  }
 
   root 'homes#top'
 
@@ -29,12 +29,11 @@ Rails.application.routes.draw do
 
   get "users" => "public/users#index"
 
-
   devise_for :admins, controllers: {
-  sessions: 'admins/sessions',
-  password: 'admins/passwords',
-  registrations: 'admins/registrations'
-}
+    sessions: 'admins/sessions',
+    password: 'admins/passwords',
+    registrations: 'admins/registrations',
+  }
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
@@ -42,5 +41,4 @@ Rails.application.routes.draw do
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
 end
