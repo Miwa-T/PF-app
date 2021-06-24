@@ -43,4 +43,3 @@ RSpec.describe 'post_imageモデルのテスト', type: :model do
     end
   end
 end
-

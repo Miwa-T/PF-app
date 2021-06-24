@@ -35,7 +35,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
       end
 
       it '一意性があること' do
-        user.account_name = other_user.name
+        user.account_name = other_user.account_name
         is_expected.to eq false
       end
     end
@@ -59,7 +59,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
       end
     end
 
-     context 'numberカラム' do
+    context 'numberカラム' do
       it '空欄でないこと' do
         user.number = ''
         is_expected.to eq false
