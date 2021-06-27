@@ -19,8 +19,8 @@ class User < ApplicationRecord
   end
 
   validates :email, presence: true
-  validates :name, presence: true, uniqueness: true
-  validates :account_name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: { maximum: 15 }
+  validates :account_name, presence: true, uniqueness: true, length: { maximum: 15 }
   validates :profile_image, presence: true
   validates :introduction, presence: true, length: { maximum: 200 }
   validates :number, presence: true, numericality: true

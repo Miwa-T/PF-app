@@ -6,8 +6,7 @@ RSpec.describe 'Tagモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     subject { tag.valid? }
 
-    let(:user) { create(:user) }
-    let!(:tag) { build(:tag, user_id: user.id) }
+    let!(:tag) { build(:tag) }
 
     context 'tag_nameカラム' do
       it '空欄でないこと' do

@@ -9,6 +9,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     let!(:other_user) { create(:user) }
     let(:user) { build(:user) }
 
+
     context 'emailカラム' do
       it '空欄でないこと' do
         user.email = ''
@@ -26,6 +27,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         user.name = other_user.name
         is_expected.to eq false
       end
+
     end
 
     context 'account_nameカラム' do
@@ -36,13 +38,6 @@ RSpec.describe 'Userモデルのテスト', type: :model do
 
       it '一意性があること' do
         user.account_name = other_user.account_name
-        is_expected.to eq false
-      end
-    end
-
-    context 'profile_imageカラム' do
-      it '空欄でないこと' do
-        user.profile_image = ''
         is_expected.to eq false
       end
     end
