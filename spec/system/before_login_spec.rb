@@ -24,16 +24,23 @@ describe 'ユーザログイン前のテスト' do
       subject { current_path }
 
       it 'Topを押すと、トップ画面に遷移する' do
+        top_link = find_all('a')[1].native.inner_text
+        top_link = top_link.delete(' ')
+        top_link.gsub!(/\n/, '')
         click_link top_link
         is_expected.to eq '/'
       end
 
       it 'Sign upを押すと、新規登録画面に遷移する' do
+        signup_link = find_all('a')[2].native.inner_text
+        signup_link = signup_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link signup_link
         is_expected.to eq '/users/sign_up'
       end
 
       it 'Loginを押すと、ログイン画面に遷移する' do
+        login_link = find_all('a')[3].native.inner_text
+        login_link = login_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link login_link
         is_expected.to eq '/users/sign_in'
       end
@@ -80,13 +87,14 @@ describe 'ユーザログイン前のテスト' do
 
     context '新規登録成功のテスト' do
       before do
-        fill_in 'user[name]', with: Faker::Name.name
+        fill_in 'user[name]', with: Faker::Lorem.characters(number: 10)
         fill_in 'user[account_name]', with: Faker::Lorem.characters(number: 10)
         fill_in 'user[email]', with: Faker::Internet.email
         fill_in 'user[number]', with: Faker::Number.between(to: 11)
         fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 30)
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
+        page.attach_file('user[profile_image]', "#{Rails.root}/app/assets/images/img/logo.png")
       end
 
       it '正しく新規登録される' do
@@ -126,7 +134,7 @@ describe 'ユーザログイン前のテスト' do
 
     context 'ログイン失敗のテスト' do
       before do
-        fill_in 'user[name]', with: ''
+        fill_in 'user[email]', with: ''
         fill_in 'user[password]', with: ''
         click_button 'ログインする'
       end
@@ -142,7 +150,7 @@ describe 'ユーザログイン前のテスト' do
 
     before do
       visit new_user_session_path
-      fill_in 'user[name]', with: user.name
+      fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'ログインする'
     end

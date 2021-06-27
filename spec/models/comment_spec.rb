@@ -7,7 +7,7 @@ RSpec.describe 'commentモデルのテスト', type: :model do
     subject { comment.valid? }
 
     let(:user) { create(:user) }
-    let!(:comment) { build(:comment, post_image_id: post_image.id) }
+    let!(:comment) { build(:comment) }
 
     context 'commentカラム' do
       it '空欄でないこと' do

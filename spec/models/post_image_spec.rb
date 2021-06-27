@@ -7,14 +7,8 @@ RSpec.describe 'post_imageモデルのテスト', type: :model do
     subject { post_image.valid? }
 
     let(:user) { create(:user) }
-    let!(:post_image) { build(:post_image, user_id: user.id) }
+    let!(:post_image) { build(:post_image) }
 
-    context 'imageカラム' do
-      it '空欄でないこと' do
-        post_image.image = ''
-        is_expected.to eq false
-      end
-    end
 
     context 'explainカラム' do
       it '空欄でないこと' do
