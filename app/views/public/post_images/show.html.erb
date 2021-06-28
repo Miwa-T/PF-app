@@ -52,7 +52,7 @@
           <div class="new-comment">
             <%= form_with(model: [@post_image, @comment], remote: true) do |f| %>
             <%= render "layouts/error", model: f.object %>
-            <%= f.text_area :comment, rows:'3', class: "form-control" %>
+            <%= f.text_area :comment, rows:'3', placeholder:"コメント記入欄です", class: "form-control" %>
           </div>
         </div>
           <div class="col-3 my-auto">
