@@ -7,21 +7,21 @@
   </div>
   <div class="row  col-6 mx-auto py-3">
     <div class="col-6 mx-auto">
-      <h4 class="underline justify-content-center title">index</h4>
+      <h4 class="underline justify-content-center title">Index</h4>
     </div>
   </div>
     <div class="row mx-auto py-2">
       <% @post_images.each do |post_image| %>
         <div class="col-4 py-2">
           <div>
-            <%= attachment_image_tag post_image.user, :profile_image,:fill, 60,60, class: "rounded-circle" %>
+            <%= attachment_image_tag post_image.user, :profile_image,:fill, 60,60, fallback: "img/no-image5.jpeg",size:'60x60', class: "rounded-circle" %>
             <%= link_to user_path(post_image.user.id) do %>
               <%= post_image.user.account_name %>
             <% end %>
           </div>
           <div>
             <%= link_to post_image_path(post_image.id) do %>
-              <%= attachment_image_tag post_image, :image, :fill, 280,280, class: "rounded pt-2" %>
+              <%= attachment_image_tag post_image, :image, :fill, 280,280, class: "rounded pt-2 hover" %>
             <% end %>
           </div>
           <div id="post_image_<%= post_image.id %>">

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   }
 
   root 'homes#top'
+  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
   scope module: :public do
     get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'user_unsubscribe'
