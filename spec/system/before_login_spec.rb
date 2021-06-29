@@ -91,10 +91,8 @@ describe 'ユーザログイン前のテスト' do
         fill_in 'user[account_name]', with: Faker::Lorem.characters(number: 10)
         fill_in 'user[email]', with: Faker::Internet.email
         fill_in 'user[number]', with: Faker::Number.between(to: 11)
-        fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 30)
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
-        page.attach_file('user[profile_image]', "#{Rails.root}/app/assets/images/img/logo.png")
       end
 
       it '正しく新規登録される' do

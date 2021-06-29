@@ -2,7 +2,7 @@
 <div class="container py-5">
     <div class="row col-10 mx-auto pt-3">
       <div class="col-3">
-        <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, class: "rounded-circle" %>
+        <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, fallback: "img/no-image5.jpeg",size:'140x140', class: "rounded-circle" %>
       </div>
       <div class="col-9">
         <div class="row">

@@ -1,6 +1,10 @@
-<%= form_with url: searches_search_path, method: :get, local: true do |f| %>
-  <%#= f.select :range, options_for_select(["User"]) %>
-  <%#= f.select :search, options_for_select([["完全一致","perfect_match"],["部分一致","partial_match"]]) %>
-  <%= f.text_field :word, placeholder:"ユーザー名" %>
-  <%= f.submit "検索" %>
-<% end %>
+<div class="form-group">
+  <%= form_with url: searches_search_path, method: :get, local: true do |f| %>
+    <%#= f.select :range, options_for_select(["User"]) %>
+    <%#= f.select :search, options_for_select([["完全一致","perfect_match"],["部分一致","partial_match"]]) %>
+    <%= f.text_field :word, placeholder:"ユーザー名", class: "search-form" %>
+    <span class="input-group-btn">
+      <%= f.submit "検索" %>
+    </span>
+  <% end %>
+</div>

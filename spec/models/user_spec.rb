@@ -43,11 +43,6 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
 
     context 'introductionカラム' do
-      it '空欄でないこと' do
-        user.introduction = ''
-        is_expected.to eq false
-      end
-
       it '200文字以下であること' do
         user.introduction = Faker::Lorem.characters(number: 201)
         is_expected.to eq false
@@ -55,11 +50,6 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
 
     context 'numberカラム' do
-      it '空欄でないこと' do
-        user.number = ''
-        is_expected.to eq false
-      end
-
       it '数値入力であること' do
         user.number = Faker::Number.between(to: 11)
         is_expected.to eq true
