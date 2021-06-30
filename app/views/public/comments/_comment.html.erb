@@ -1,7 +1,7 @@
 <% post_image.comments.each do |comment| %>
   <div class="row py-2">
     <div class="col-3 my-auto">
-      <%= attachment_image_tag comment.user, :profile_image, :fill, 70, 70, fallback: "img/no-image5.jpeg", size: '60x60', class: "rounded-circle" %>
+      <%= attachment_image_tag comment.user, :profile_image, :fill, 70, 70, fallback: "img/no-image5.jpg", size: '70x70', class: "rounded-circle" %>
     </div>
     <div class="col-3 my-auto">
       <%= comment.user.account_name %>
