@@ -14,7 +14,7 @@
       <% @post_images.each do |post_image| %>
         <div class="col-4 py-2">
           <div>
-            <%= attachment_image_tag post_image.user, :profile_image,:fill, 60,60, fallback: "img/no-image5.jpeg",size:'60x60', class: "rounded-circle" %>
+            <%= attachment_image_tag post_image.user, :profile_image,:fill, 60,60, fallback: "img/no-image5.jpeg", size: '60x60', class: "rounded-circle" %>
             <%= link_to user_path(post_image.user.id) do %>
               <%= post_image.user.account_name %>
             <% end %>

@@ -14,7 +14,7 @@
   </div>
   <div class="row col-6 mx-auto">
     <div class="col">
-      <%= attachment_image_tag @post_image.user, :profile_image,:fill, 70,70, fallback: "img/no-image5.jpeg",size:'60x60', class: "rounded-circle" %>
+      <%= attachment_image_tag @post_image.user, :profile_image,:fill, 70,70, fallback: "img/no-image5.jpeg", size:'60x60', class: "rounded-circle" %>
       <%= link_to user_path(@post_image.user.id), class: "mx-3" do %>
         <%= @post_image.user.account_name %>
       <% end %>
