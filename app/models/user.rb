@@ -23,7 +23,7 @@ class User < ApplicationRecord
   validates :account_name, presence: true, uniqueness: true, length: { maximum: 15 }
   #validates :profile_image, presence: true
   #validates :introduction, length: { maximum: 200 }
-  validates :number, numericality: true
+  validates :number, presence: true, numericality: true
 
   attachment :profile_image
 
