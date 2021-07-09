@@ -19,9 +19,9 @@
               <%= post_image.user.account_name %>
             <% end %>
           </div>
-          <div>
+          <div class="zoomIn">
             <%= link_to post_image_path(post_image.id) do %>
-              <%= attachment_image_tag post_image, :image, :fill, 280,280, class: "rounded pt-2 hover" %>
+              <span class="mask"><%= attachment_image_tag post_image, :image, :fill, 280,280, class: "rounded pt-2 hover" %></span>
             <% end %>
           </div>
           <div id="post_image_<%= post_image.id %>">

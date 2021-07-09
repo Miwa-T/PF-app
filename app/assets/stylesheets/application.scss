@@ -98,3 +98,17 @@ header, .title, footer {
  word-break: break-word;
 }
 
+.zoomIn img {
+ transform: scale(1);
+ transition:.3s ease-in-out;
+}
+
+.zoomIn a:hover img {
+ transform: scale(1.2);
+}
+
+.mask {
+ display: block;
+ line-height: 0;
+ overflow: hidden;
+}

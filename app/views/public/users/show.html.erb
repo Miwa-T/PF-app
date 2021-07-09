@@ -49,9 +49,11 @@
     <div class="row col-10 mx-auto py-4 flex-wrap">
       <% @post_images.each do |post_image| %>
         <div class="col-3 mx-4">
-          <%= link_to post_image_path(post_image.id) do %>
-            <%= attachment_image_tag post_image, :image, :fill, 200,200, class: "rounded" %>
-          <% end %>
+          <div class="zoomIn">
+            <%= link_to post_image_path(post_image.id) do %>
+              <span class="mask"><%= attachment_image_tag post_image, :image, :fill, 200,200, class: "rounded" %></span>
+            <% end %>
+          </div>
           <div id="post_image_<%= post_image.id %>">
             <%= render "public/favorites/favorite", post_image: post_image %>
           </div>
