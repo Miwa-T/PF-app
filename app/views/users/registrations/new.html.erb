@@ -7,17 +7,12 @@
             <div class="card-body">
               <%= form_with model: @user,url: user_registration_path, id:'new_user', class: 'new_user', local: true do |f| %>
               <%= render "users/shared/error_messages", resource: resource %>
-                <div class="form-group row justify-content-center pt-4">
-                  <div class="col-3">
-                    <%= f.label :'名前' %>
-                  </div>
-                  <div class="col-4">
-                    <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
-                  </div>
+                <div class="form-group row justify-content-center">
+                  <p>★マークは入力必須項目です</p>
                 </div>
                 <div class="form-group row justify-content-center">
                   <div class="col-3">
-                    <%= f.label :'アカウント名' %>
+                    <%= f.label :'★アカウント名' %>
                   </div>
                   <div class="col-4">
                     <%= f.text_field :account_name, autocomplete: "account_name", class: "form-control" %>
@@ -25,18 +20,10 @@
                 </div>
                 <div class="form-group row justify-content-center">
                   <div class="col-3">
-                    <%= f.label :'メールアドレス' %>
+                    <%= f.label :'★メールアドレス' %>
                   </div>
                   <div class="col-4">
                     <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
-                  </div>
-                </div>
-                <div class="form-group row justify-content-center">
-                  <div class="col-3">
-                    <%= f.label :'電話番号' %>
-                  </div>
-                  <div class="col-4">
-                    <%= f.text_field :number, autocomplete: "number", class: "form-control" %>
                   </div>
                 </div>
                 <div class="form-group row justify-content-center">
@@ -57,7 +44,7 @@
                 </div>
                 <div class="form-group row justify-content-center">
                   <div class="col-3">
-                    <%= f.label :'パスワード(6文字以上)' %>
+                    <%= f.label :'★パスワード(6文字以上)' %>
                   </div>
                   <div class="col-4">
                     <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
@@ -65,7 +52,7 @@
                 </div>
                 <div class="form-group row justify-content-center">
                   <div class="col-3">
-                    <%= f.label :'パスワード(確認用)' %>
+                    <%= f.label :'★パスワード(確認用)' %>
                   </div>
                   <div class="col-4">
                     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
