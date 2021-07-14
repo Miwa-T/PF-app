@@ -1,51 +1,35 @@
 <!--投稿編集画面-->
 <div class="container py-5">
-  <div class="row col-7 mx-auto">
-    <div class="col">
-      <h5 class="title">Edit MyPost</h5>
-    </div>
-  </div>
-  <div class="row col-7 mx-auto py-3">
-    <div class="col">
-      <%= form_with model: @post_image, local: true do |f| %>
-      <%= render "layouts/error", model: f.object %>
-        <div class="form-group row justify-content-center">
-          <div class="col-5">
-            <%= f.label :'画像' %>
-          </div>
-          <div class="col-7">
-            <%= f.attachment_field :image %>
-          </div>
+  <div class="row mx-auto">
+     <div class="col">
+       <div class="row justify-content-center">
+         <div class="col-6 form-area px-5">
+          <h4 class="text-center title mt-5">Edit MyPost</h4>
+            <%= form_with model: @post_image, local: true do |f| %>
+            <%= render "layouts/error", model: f.object %>
+              <div class="field my-3">
+                <%= f.label :'タイトル' %>
+                <%= f.text_field :title, class: "form-control" %>
+              </div>
+              <div class="field my-3">
+                <%= f.label :'画像' %></br>
+                <%= f.attachment_field :image %>
+              </div>
+              <div class="field my-3">
+                <%= f.label :'投稿内容' %>
+                <%= f.text_area :explain, rows:'5', class: "form-control" %>
+              </div>
+              <div class="field my-3">
+                <%= f.label :'タグ' %>
+                <%= f.text_field :caption, class: "form-control" %>
+              </div>
+              <!--保存後は詳細画面に遷移-->
+              <div class="action my-5">
+                <%= f.submit '変更を保存する', class: "btn btn-outline-dark form-control" %>
+              </div>
+            <% end %>
         </div>
-        <div class="form-group row justify-content-center">
-          <div class="col-5">
-            <%= f.label :'タイトル' %>
-          </div>
-          <div class="col-7">
-            <%= f.text_field :title, class: "form-control" %>
-          </div>
-        </div>
-        <div class="form-group row justify-content-center">
-          <div class="col-5">
-            <%= f.label :'投稿内容' %>
-          </div>
-          <div class="col-7">
-            <%= f.text_area :explain, rows:'5', class: "form-control" %>
-          </div>
-        </div>
-        <div class="form-group row justify-content-center">
-          <div class="col-5">
-            <%= f.label :'タグ' %>
-          </div>
-          <div class="col-7">
-            <%= f.text_field :caption, class: "form-control" %>
-          </div>
-        </div>
-        <!--保存後は詳細画面に遷移-->
-        <div class="action row justify-content-center py-3">
-          <%= f.submit '変更を保存する', class: "btn btn-info col-3" %>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

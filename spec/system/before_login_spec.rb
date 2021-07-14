@@ -56,17 +56,11 @@ describe 'ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/sign_up'
       end
-      it 'nameフォームが表示される' do
-        expect(page).to have_field 'user[name]'
-      end
       it 'account_nameフォームが表示される' do
         expect(page).to have_field 'user[account_name]'
       end
       it 'emailフォームが表示される' do
         expect(page).to have_field 'user[email]'
-      end
-      it 'numberフォームが表示される' do
-        expect(page).to have_field 'user[number]'
       end
       it 'profile_imageフォームが表示される' do
         expect(page).to have_field 'user[profile_image]'
@@ -87,10 +81,8 @@ describe 'ユーザログイン前のテスト' do
 
     context '新規登録成功のテスト' do
       before do
-        fill_in 'user[name]', with: Faker::Lorem.characters(number: 10)
         fill_in 'user[account_name]', with: Faker::Lorem.characters(number: 10)
         fill_in 'user[email]', with: Faker::Internet.email
-        fill_in 'user[number]', with: Faker::Number.between(to: 11)
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
       end

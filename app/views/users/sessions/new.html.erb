@@ -1,31 +1,29 @@
 <!--Userログイン画面-->
 <div class="container py-5">
-  <div class="row col-8 mx-auto">
+  <div class="row mx-auto">
     <div class="col">
-      <div class="card">
-        <div class="card-header font-weight-bold text-center title">Log in</div>
-          <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="col-6 form-area px-5">
+          <h4 class="text-center title mt-5">Log in</h4>
             <%= form_with model: @user,url: user_session_path, local: true do |f| %>
             <% if flash[:alert] %>
               <p class="alert"><%= alert %></p>
             <% end %>
-              <div class="form-group row justify-content-center">
-                <%= f.label :'メールアドレス', class: "col-4" %>
-                <%= f.email_field :email, autocomplete: "email", class: "form-control col-4" %>
+              <div class="field my-3">
+                <%= f.label :'メールアドレス'%>
+                <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
               </div>
-              <div class="form-group row justify-content-center">
-                <%= f.label :'パスワード', class: "col-4" %>
-                <%= f.password_field :password, autocomplete: "current-password", class: "form-control col-4" %>
+              <div class="field my-3">
+                <%= f.label :'パスワード' %>
+                <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
               </div>
               <!--ログイン後はマイページへ-->
-              <div class="action row justify-content-center">
-                <%= f.submit "ログインする",class: "btn btn-info col-3" %>
+              <div class="action action my-5">
+                <%= f.submit "ログイン",class: "btn btn-outline-dark form-control" %>
               </div>
             <% end %>
-            <div class="text-center pt-3">
-              <%= link_to "アカウントを新規登録する", new_user_registration_path %>
-            </div>
-          </div>
+          <div class="already text-center mb-5"><%= link_to "アカウントを新規登録する", new_user_registration_path %></div>
+        </div>
       </div>
     </div>
   </div>
