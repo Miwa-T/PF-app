@@ -1,5 +1,5 @@
   <% if user.followed_by?(current_user) %>
-    <%= link_to "フォロー済み",user_relationship_path(user.id,follow.id), method: :delete, remote: true, class: "btn btn-outline-info" %>
+    <%= link_to "フォロー済み",user_relationship_path(user.id,follow.id), method: :delete, remote: true, class: "btn btn-outline-dark" %>
   <% else %>
-    <%= link_to "フォローする",user_relationships_path(user.id), method: :post, remote: true, class: "btn btn-outline-info" %>
+    <%= link_to "フォローする",user_relationships_path(user.id), method: :post, remote: true, class: "btn btn-outline-dark" %>
   <% end %>
