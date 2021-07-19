@@ -49,7 +49,6 @@ class Public::PostImagesController < ApplicationController
   end
 
   def tag
-    @user = current_user
     @hashtag = Tag.find_by(tag_name: params[:name])
     @post_images = @hashtag.post_images
   end

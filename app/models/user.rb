@@ -20,8 +20,6 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   validates :account_name, presence: true, uniqueness: true, length: { maximum: 15 }
-  #validates :profile_image, presence: true
-  #validates :introduction, length: { maximum: 200 }
 
   attachment :profile_image
 
