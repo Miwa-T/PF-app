@@ -16,9 +16,12 @@
             そんな時間を切り取って、記録して、共有してください。<br>
             皆様にとって素敵なBread Lifeを過ごせますように。
           </P>
+          <% if user_signed_in? %>
+          <% else %>
           <div class="text-center mb-3">
             <%= link_to 'ゲストログインはこちらから', homes_guest_sign_in_path, method: :post, class: "btn btn-outline-light" %>
           </div>
+          <% end %>
         </div>
       </div>
     </div>
