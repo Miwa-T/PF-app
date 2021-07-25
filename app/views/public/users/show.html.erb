@@ -10,7 +10,7 @@
             <font size="5"><%= @user.account_name %></font>
           </div>
           <% if @user == current_user %>
-          <div class="col-12 col-md-4 py-2">
+          <div class="col-12 col-md-4">
             <%= link_to "Profile edit", edit_user_path(@user), class: "btn btn-outline-dark" %>
           </div>
           <div class="col-12 col-md-4">
