@@ -5,14 +5,14 @@
       <%= render "search" %>
     </div>
   </div>
-  <div class="row  col-6 mx-auto py-3">
-    <div class="col-6 mx-auto">
+  <div class="row col-10 col-md-6 mx-auto py-3">
+    <div class="col-10 col-lg-6 mx-auto">
       <h4 class="underline justify-content-center title">Index</h4>
     </div>
   </div>
     <div class="row mx-auto py-2">
       <% @post_images.each do |post_image| %>
-        <div class="col-4 py-2">
+        <div class="col-12 col-md-6 col-lg-4 py-2">
           <div>
             <%= attachment_image_tag post_image.user, :profile_image,:fill, 60,60, fallback: "img/no-image5.jpg", size: '60x60', class: "rounded-circle" %>
             <%= link_to user_path(post_image.user.id) do %>
