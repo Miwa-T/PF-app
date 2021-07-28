@@ -170,3 +170,41 @@ header, .title, footer {
  line-height: 0;
  overflow: hidden;
 }
+
+.pagination {
+  height: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.pagination a {
+  background-color: grey;
+  text-decoration: none;
+}
+
+.pagination * {
+  color: white;
+  text-decoration: none;
+  padding: 12px 19px 12px 19px;
+  border-radius: 25px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.current {
+  font-style: normal;
+  color: white;
+  background: #008db7;
+  font-family: 'Nunito', sans-serif;
+}
+
+.pagination a:hover {
+  background: #008db7;
+}
+
+.pagination .disabled {
+  color: #666666;
+  padding: 11px 17px;
+  border: 1px solid #666666;
+  border-radius: 23px;
+  font-family: 'Nunito', sans-serif;
+}

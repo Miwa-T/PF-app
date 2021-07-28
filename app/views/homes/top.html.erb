@@ -8,17 +8,20 @@
       <div class="carousel-item active top-image1"></div>
       <div class="carousel-item top-image2"></div>
       <div class="carousel-item top-image3"></div>
-      <div class="row col-8 mx-auto top-content">
+      <div class="row col-10 col-sm-8 mx-auto top-content">
         <div class="col">
           <h4 class="text-center my-4 text-light">Welcome to "Bread Life"</h4>
           <p class="text-center my-4 text-light">
-            美味しいパンと過ごす時間は、どんな時でも私たちを癒してくれる素敵な時間です。</br>
-            そんな時間を切り取って、記録して、共有してください。</br>
+            美味しいパンと過ごす時間は、どんな時でも私たちを癒してくれる素敵な時間です。<br>
+            そんな時間を切り取って、記録して、共有してください。<br>
             皆様にとって素敵なBread Lifeを過ごせますように。
           </P>
+          <% if user_signed_in? %>
+          <% else %>
           <div class="text-center mb-3">
             <%= link_to 'ゲストログインはこちらから', homes_guest_sign_in_path, method: :post, class: "btn btn-outline-light" %>
           </div>
+          <% end %>
         </div>
       </div>
     </div>
