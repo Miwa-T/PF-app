@@ -1,7 +1,7 @@
 <div class="container py-5">
   <h5 class="text-center my-3">本当に退会しますか？</h5>
   <div class="row">
-    <div class="col-4 mx-auto">
+    <div class="col-6 col-sm-4 mx-auto">
       <%= link_to "Yes", user_withdraw_path(@user), method: :patch, class: "btn btn-outline-dark btn-block" %>
       <%= link_to "No", edit_user_path(@user), class: "btn btn-outline-dark btn-block" %>
     </div>
