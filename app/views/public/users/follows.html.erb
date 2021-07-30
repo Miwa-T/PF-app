@@ -5,6 +5,9 @@
       <h5>Follows</h5>
     </div>
   </div>
+    <% if @users.empty? %>
+      <h5 class="text-center py-4">該当するユーザーがいません</h5>
+    <% end %>
     <% @users.each do |user| %>
     <div class="row col-12 col-md-8 mx-auto align-items-center py-2">
       <div class="col-4">
