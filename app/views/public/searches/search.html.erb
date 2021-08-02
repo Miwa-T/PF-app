@@ -19,12 +19,12 @@
           <%= user.account_name %>
         <% end %>
       </div>
-      <% if current_user != user %>
       <div class="col-5">
-        <div id="followbtn_<%= user.id %>">
-        <%= render "public/users/followbtn", user: user, follow: @follow %>
-        </div>
-      <% end %>
+        <% if current_user != user %>
+          <div id="followbtn_<%= user.id %>">
+            <%= render "public/users/followbtn", user: user, follow: @follow %>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
