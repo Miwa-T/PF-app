@@ -1,6 +1,6 @@
 <!--投稿詳細画面-->
 <div class="container py-5">
-  <div class="row col-8 mx-auto">
+  <div class="row col-12 col-lg-8 mx-auto">
     <div class="col text-right my-auto">
        <% if @post_image.user == current_user %>
          <%= link_to edit_post_image_path(@post_image.id), class: "btn btn-outline-dark mx-3" do %>
@@ -12,7 +12,7 @@
       <% end %>
     </div>
   </div>
-  <div class="row col-6 mx-auto">
+  <div class="row col-12 col-md-10 col-lg-6 mx-auto">
     <div class="col">
       <%= attachment_image_tag @post_image.user, :profile_image,:fill, 70,70, fallback: "img/no-image5.jpg", size: '70x70', class: "rounded-circle" %>
       <%= link_to user_path(@post_image.user.id), class: "mx-3" do %>
@@ -21,9 +21,9 @@
     </div>
   </div>
     <!--画像部分-->
-    <div class="row col-6 mx-auto">
+    <div class="row col-12 col-md-10 col-lg-6 mx-auto">
       <div class="col">
-        <%= attachment_image_tag @post_image, :image, :fill, 500,500, class: "rounded pt-2" %>
+        <%= attachment_image_tag @post_image, :image, :fill, 450,450, class: "rounded pt-2" %>
         <div id="post_image_<%= @post_image.id %>">
           <%= render "public/favorites/favorite", post_image: @post_image %>
         </div>
@@ -31,7 +31,7 @@
       </div>
     </div>
       <!--投稿内容-->
-      <div class="row col-6 mx-auto py-3">
+      <div class="row col-12 col-md-10 col-lg-6 mx-auto py-3">
         <div class="col">
           <div>
             <h5 class="py-3 word-break"><%= @post_image.title %></h5>
@@ -40,14 +40,14 @@
         </div>
       </div>
       <!--コメント表示-->
-      <div class="row col-6 mx-auto">
+      <div class="row col-12 col-md-10 col-lg-6 mx-auto">
         <div class="col">
           <div class="comment-table_<%= @post_image.id %>">
             <%= render "public/comments/comment", post_image: @post_image %>
           </div>
         </div>
       </div>
-      <div class="row col-6 mx-auto py-3">
+      <div class="row col-12 col-md-10 col-lg-6 mx-auto py-3">
         <div class="col">
           <div class="new-comment">
             <%= form_with(model: [@post_image, @comment], remote: true) do |f| %>

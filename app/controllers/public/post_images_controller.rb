@@ -45,7 +45,7 @@ class Public::PostImagesController < ApplicationController
   end
 
   def ranking
-    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id)desc').limit(9).pluck(:post_image_id))
+    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id)desc').limit(6).pluck(:post_image_id))
   end
 
   def tag

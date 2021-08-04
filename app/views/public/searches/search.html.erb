@@ -1,6 +1,6 @@
 <!--検索結果画面-->
 <div class="container py-5">
-  <div class="row col-8 mx-auto">
+  <div class="row col-12 col-md-8 mx-auto">
     <div class="col">
       <h5>Search for User</h5>
     </div>
@@ -10,8 +10,8 @@
   <% end %>
   <% @range == "User" %>
   <% @users.each do |user| %>
-    <div class="row col-8 mx-auto align-items-center py-2">
-      <div class="col-3">
+    <div class="row col-12 col-md-8 mx-auto align-items-center py-2">
+      <div class="col-4">
         <%= attachment_image_tag user, :profile_image, :fill, 100, 100, class: "rounded-circle" %>
       </div>
       <div class="col-3">
@@ -19,14 +19,13 @@
           <%= user.account_name %>
         <% end %>
       </div>
-      <div class="col-3">
-        投稿数:<%= user.post_images.count %>
+      <div class="col-5">
+        <% if current_user != user %>
+          <div id="followbtn_<%= user.id %>">
+            <%= render "public/users/followbtn", user: user, follow: @follow %>
+          </div>
+        <% end %>
       </div>
-      <% if current_user != user %>
-      <div id="followbtn_<%= user.id %>">
-        <%= render "public/users/followbtn", user: user, follow: @follow %>
-      </div>
-      <% end %>
     </div>
   <% end %>
 </div>
