@@ -17,8 +17,10 @@
             <%= link_to "New Post",new_post_image_path, class: "btn btn-outline-dark" %>
           </div>
           <% else %>
-          <div id="followbtn_<%= @user.id %>">
-            <%= render "public/users/followbtn", user: @user, follow: @follow %>
+          <div class="col-12 col-md-5">
+            <div id="followbtn_<%= @user.id %>">
+              <%= render "public/users/followbtn", user: @user, follow: @follow %>
+            </div>
           </div>
           <% end %>
         </div>
