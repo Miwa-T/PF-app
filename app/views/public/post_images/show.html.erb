@@ -20,44 +20,45 @@
       <% end %>
     </div>
   </div>
-    <!--画像部分-->
-    <div class="row col-12 col-md-10 col-lg-6 mx-auto">
+  <!--画像部分-->
+  <div class="row col-12 col-md-10 col-lg-6 mx-auto">
+    <div class="col">
+      <%= attachment_image_tag @post_image, :image, :fill, 450,450, class: "rounded pt-2" %>
+      <div id="post_image_<%= @post_image.id %>">
+        <%= render "public/favorites/favorite", post_image: @post_image %>
+      </div>
+      <%= render_with_tags(@post_image.caption) %>
+    </div>
+  </div>
+    <!--投稿内容-->
+    <div class="row col-12 col-md-10 col-lg-6 mx-auto py-3">
       <div class="col">
-        <%= attachment_image_tag @post_image, :image, :fill, 450,450, class: "rounded pt-2" %>
-        <div id="post_image_<%= @post_image.id %>">
-          <%= render "public/favorites/favorite", post_image: @post_image %>
+        <div>
+          <h5 class="py-3 word-break"><%= @post_image.title %></h5>
+          <p class="word-break"><%= @post_image.explain %></p>
         </div>
-        <%= render_with_tags(@post_image.caption) %>
       </div>
     </div>
-      <!--投稿内容-->
-      <div class="row col-12 col-md-10 col-lg-6 mx-auto py-3">
-        <div class="col">
-          <div>
-            <h5 class="py-3 word-break"><%= @post_image.title %></h5>
-            <p class="word-break"><%= @post_image.explain %></p>
-          </div>
+    <!--コメント表示-->
+    <div class="row col-12 col-md-10 col-lg-6 mx-auto">
+      <div class="col">
+        <div class="comment-table_<%= @post_image.id %>">
+          <%= render "public/comments/comment", post_image: @post_image %>
         </div>
       </div>
-      <!--コメント表示-->
-      <div class="row col-12 col-md-10 col-lg-6 mx-auto">
-        <div class="col">
-          <div class="comment-table_<%= @post_image.id %>">
-            <%= render "public/comments/comment", post_image: @post_image %>
-          </div>
+    </div>
+    <!--コメント投稿欄-->
+    <div class="row col-12 col-md-10 col-lg-6 mx-auto py-3">
+      <div class="col">
+        <div class="new-comment">
+          <%= form_with(model: [@post_image, @comment], remote: true) do |f| %>
+          <%= render "layouts/error", model: f.object %>
+          <%= f.text_area :comment, rows:'3', placeholder:"コメント記入欄です", class: "form-control" %>
         </div>
       </div>
-      <div class="row col-12 col-md-10 col-lg-6 mx-auto py-3">
-        <div class="col">
-          <div class="new-comment">
-            <%= form_with(model: [@post_image, @comment], remote: true) do |f| %>
-            <%= render "layouts/error", model: f.object %>
-            <%= f.text_area :comment, rows:'3', placeholder:"コメント記入欄です", class: "form-control" %>
-          </div>
-        </div>
-          <div class="col-3 my-auto">
-            <%= f.submit 'コメント投稿', class: "btn btn-outline-dark" %>
-            <% end %>
-        </div>
+      <div class="col-3 my-auto">
+        <%= f.submit 'コメント投稿', class: "btn btn-outline-dark" %>
+        <% end %>
       </div>
+    </div>
 </div>
